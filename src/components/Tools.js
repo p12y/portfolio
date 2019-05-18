@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTrail, animated } from 'react-spring';
+import { Trail } from 'react-spring/renderprops';
+import VisibilitySensor from "react-visibility-sensor";
 
 const Title = styled.h1`
   color: #333;
@@ -108,14 +111,20 @@ function Tools() {
     'Chai',
   ];
 
+  const trail = useTrail(4, { opacity: 1, marginTop: '0rem', from: { opacity: 0, marginTop: '-10rem' } });
+
+  const cards = [
+    <ToolCard title="Languages" tools={languages} />,
+    <ToolCard title="Frameworks" tools={frameworks} />,
+    <ToolCard title="Databases" tools={databases} />,
+    <ToolCard title="Testing" tools={testing} />,
+  ];
+
   return (
     <Container>
       <Title>Tools of choice</Title>
       <Section>
-        <ToolCard title="Languages" tools={languages} />
-        <ToolCard title="Frameworks" tools={frameworks} />
-        <ToolCard title="Databases" tools={databases} />
-        <ToolCard title="Testing" tools={testing} />
+        {trail.map((props, index) => <animated.div style={props}>{cards[index]}</animated.div>)}
       </Section>
     </Container>
   );
