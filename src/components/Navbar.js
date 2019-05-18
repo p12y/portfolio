@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   -webkit-box-shadow: 2px 0px 15px 5px rgba(0,0,0,0.4); 
   box-shadow: 2px 0px 15px 5px rgba(0,0,0,0.4);
   height: 100vh;
-  width: 4em;
+  width: 4rem;
   top: 0;
   left: 0;
   background: #ddd;
@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 
 const Button = styled.div`
   width: 100%;
-  height: 4em;
+  height: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,8 +28,10 @@ const HomeButton = styled(Button)`
 `;
 
 const IconButton = styled(Button)`
-  font-size: 1.5em;
+  font-size: 1.5rem;
   color: #333;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 `;
 
 function NavButton({ icon }) {

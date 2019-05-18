@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import './index.css';
 
 // Icons
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -19,7 +20,7 @@ library.add(
   faPaperPlane,
   faSun,
   faMoon,
-  );
+);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
