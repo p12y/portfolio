@@ -1,8 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+
+// Icons
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+  faLaptopCode,
+  faToolbox,
+  faPaperPlane,
+  faSun,
+  faMoon,
+} from '@fortawesome/free-solid-svg-icons';
+
+library.add(
+  faLaptopCode,
+  faToolbox,
+  faPaperPlane,
+  faSun,
+  faMoon,
+  );
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
