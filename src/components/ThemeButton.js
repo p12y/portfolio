@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Wrapper = styled.div`
   width: 4rem;
   height: 4rem;
-  background: #ddd;
+  background: ${props => props.background};
   color: #333;
   position: fixed;
   display: flex;
@@ -31,8 +31,8 @@ function LightButton() {
 
 function DarkButton() {
   return (
-    <Wrapper>
-      <FontAwesomeIcon icon="moon" />
+    <Wrapper background="#202B31">
+      <FontAwesomeIcon color="white" icon="moon" />
     </Wrapper>
   );
 }
