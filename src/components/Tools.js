@@ -6,6 +6,9 @@ import { useTrail, animated } from 'react-spring';
 const Title = styled.h1`
   color: #333;
   font-family: 'Space Mono', monospace;
+  -webkit-box-shadow: inset 0 -6px 0 rgba(246,43,84, 1);
+  box-shadow: inset 0 -6px 0 rgba(246,43,84, 1);
+  display: inline-block;
 `;
 
 const Container = styled.div`
@@ -122,7 +125,7 @@ function Tools() {
 
   return (
     <Container>
-      <Title>Tools of choice</Title>
+      <Title>Toolbox</Title>
       <Waypoint onEnter={() => set({ opacity: 1, transform: 'scale(1)' })} >
         <Section>
           {trail.map((props, index) => <div style={{ alignSelf: 'start' }}><animated.div style={props}>{cards[index]}</animated.div></div>)}
