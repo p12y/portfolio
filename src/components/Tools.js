@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Waypoint } from 'react-waypoint';
 import { useTrail, animated } from 'react-spring';
-import { Trail } from 'react-spring/renderprops';
-import VisibilitySensor from "react-visibility-sensor";
 
 const Title = styled.h1`
   color: #333;
@@ -41,6 +40,7 @@ const ToolContainer = styled.div`
   box-shadow: 3px 4px 5px -2px rgba(0,0,0,0.33);
   text-align: center;
   padding-bottom: 0.5rem;
+  padding-top: 1px;
 `;
 
 const ToolHeader = styled.h3`
@@ -66,9 +66,9 @@ const Li = styled.li`
 function ToolCard({ title, tools }) {
   return (
     <ToolContainer>
-      <ToolHeader>{title}</ToolHeader>
-      <Hr />
       <Ul>
+        <li><ToolHeader>{title}</ToolHeader></li>
+        <Hr />
         {tools.map((tool, index) => {
           return (
             <div key={tool}>
@@ -111,7 +111,7 @@ function Tools() {
     'Chai',
   ];
 
-  const trail = useTrail(4, { opacity: 1, marginTop: '0rem', from: { opacity: 0, marginTop: '-10rem' } });
+  const [trail, set] = useTrail(4, () => { return { opacity: 0, transform: 'scale(0)' } });
 
   const cards = [
     <ToolCard title="Languages" tools={languages} />,
@@ -123,9 +123,11 @@ function Tools() {
   return (
     <Container>
       <Title>Tools of choice</Title>
-      <Section>
-        {trail.map((props, index) => <animated.div style={props}>{cards[index]}</animated.div>)}
-      </Section>
+      <Waypoint onEnter={() => set({ opacity: 1, transform: 'scale(1)' })} >
+        <Section>
+          {trail.map((props, index) => <div style={{ alignSelf: 'start' }}><animated.div style={props}>{cards[index]}</animated.div></div>)}
+        </Section>
+      </Waypoint>
     </Container>
   );
 }
