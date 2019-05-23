@@ -5,6 +5,10 @@ body {
   padding: 0;
 }
 
+div {
+  transition: background-color 0.5s ease;
+}
+
 body {
   padding-left: 4rem;
 }

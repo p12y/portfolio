@@ -4,7 +4,7 @@ import { Waypoint } from 'react-waypoint';
 import { useTrail, animated } from 'react-spring';
 
 const Title = styled.h1`
-  color: #333;
+  color: ${props => props.theme.titleColor};
   font-family: 'Space Mono', monospace;
   -webkit-box-shadow: inset 0 -6px 0 rgba(246,43,84, 1);
   box-shadow: inset 0 -6px 0 rgba(246,43,84, 1);
@@ -126,9 +126,15 @@ function Tools() {
   return (
     <Container>
       <Title>Toolbox</Title>
-      <Waypoint onEnter={() => set({ opacity: 1, transform: 'scale(1)' })} >
+      <Waypoint
+        onEnter={() => set({ opacity: 1, transform: 'scale(1)' })}
+        onLeave={() => set({ opacity: 0, transform: 'scale(0)' })}
+      >
         <Section>
-          {trail.map((props, index) => <div style={{ alignSelf: 'start' }}><animated.div style={props}>{cards[index]}</animated.div></div>)}
+          {trail.map((props, index) =>
+            <div style={{ alignSelf: 'start' }}>
+              <animated.div style={props}>{cards[index]}</animated.div>
+            </div>)}
         </Section>
       </Waypoint>
     </Container>

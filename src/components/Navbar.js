@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   width: 4rem;
   top: 0;
   left: 0;
-  background: #ddd;
+  background: ${props => props.theme.navBackground};
 `;
 
 const Button = styled.div`
@@ -29,7 +29,7 @@ const HomeButton = styled(Button)`
 
 const IconButton = styled(Button)`
   font-size: 1.5rem;
-  color: #333;
+  background: ${props => props.theme.navBackground};
   margin-top: 1rem;
   margin-bottom: 1rem;
 `;

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useSpring, animated } from 'react-spring'
+import { useSpring, animated } from 'react-spring';
+import ThemeContext from '../context/ThemeContext';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -21,7 +22,7 @@ const Wrapper = styled.div`
 
 function LightButton({ onClick }) {
   return (
-    <Wrapper onClick={onClick}>
+    <Wrapper onClick={onClick} background="white">
       <FontAwesomeIcon icon="sun" />
     </Wrapper>
   );
@@ -37,7 +38,7 @@ function DarkButton({ onClick }) {
 
 function ThemeButton() {
   const [hidden, setHidden] = useState(false);
-  const [theme, setTheme] = useState('light');
+  const theme = useContext(ThemeContext);
 
   const scrollListener = event => setHidden(window.pageYOffset > 300);
 
@@ -57,14 +58,14 @@ function ThemeButton() {
   });
 
   const renderButton = () => {
-    return theme === 'light'
+    return theme.mode === 'light'
       ? <DarkButton onClick={() => {
         setHidden(false);
-        setTheme('dark');
+        theme.setMode('dark');
       }} />
       : <LightButton onClick={() => {
         setHidden(false);
-        setTheme('light');
+        theme.setMode('light');
       }} />;
   }
 
