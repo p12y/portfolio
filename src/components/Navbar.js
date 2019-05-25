@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import media from '../styles/media';
+import media from 'styles/media';
 
 const Wrapper = styled.div`
   position: fixed;

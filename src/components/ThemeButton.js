@@ -2,8 +2,8 @@ import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSpring, animated } from 'react-spring';
-import ThemeContext from '../context/ThemeContext';
-import media from '../styles/media';
+import ThemeContext from 'context/ThemeContext';
+import media from 'styles/media';
 
 const Wrapper = styled.div`
   width: 100%;

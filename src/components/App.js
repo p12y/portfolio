@@ -4,7 +4,7 @@ import ThemeButton from './ThemeButton';
 import About from './About';
 import Tools from './Tools';
 import styled from 'styled-components';
-import media from '../styles/media';
+import media from 'styles/media';
 
 function App() {
   const Main = styled.div`

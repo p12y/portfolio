@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
-import ThemeContext from '../context/ThemeContext';
+import ThemeContext from 'context/ThemeContext';
 
 const themes = {
   light: {

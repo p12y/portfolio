@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Waypoint } from 'react-waypoint';
 import { useTrail, animated } from 'react-spring';
-import media from '../styles/media';
+import media from 'styles/media';
 
 const Title = styled.h1`
   color: ${props => props.theme.titleColor};

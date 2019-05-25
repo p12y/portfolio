@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Waypoint } from 'react-waypoint';
 import { useSpring, animated } from 'react-spring';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import media from '../styles/media';
+import media from 'styles/media';
 
 const Container = styled.div`
   display: flex;
