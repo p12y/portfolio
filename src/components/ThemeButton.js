@@ -62,10 +62,12 @@ function ThemeButton() {
       ? <DarkButton onClick={() => {
         setHidden(false);
         theme.setMode('dark');
+        localStorage.setItem('mode', 'dark');
       }} />
       : <LightButton onClick={() => {
         setHidden(false);
         theme.setMode('light');
+        localStorage.setItem('mode', 'light');
       }} />;
   }
 
