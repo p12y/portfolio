@@ -4,20 +4,24 @@ import ThemeButton from './ThemeButton';
 import About from './About';
 import Tools from './Tools';
 import styled from 'styled-components';
+import media from '../styles/media';
 
 function App() {
-  const AppContainer = styled.div`
-    background: ${props => props.theme.background};
+  const Main = styled.div`
+    padding-left: 4rem;
+    ${media.phone`padding-left: 0`}
     height: 100%;
   `;
 
   return (
-    <AppContainer>
+    <>
       <Navbar />
-      <About />
-      <Tools />
-      <ThemeButton />
-    </AppContainer>
+      <Main>
+        <About />
+        <Tools />
+        <ThemeButton />
+      </Main>
+    </>
   );
 }
 

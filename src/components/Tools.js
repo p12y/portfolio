@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Waypoint } from 'react-waypoint';
 import { useTrail, animated } from 'react-spring';
+import media from '../styles/media';
 
 const Title = styled.h1`
   color: ${props => props.theme.titleColor};
@@ -12,9 +13,10 @@ const Title = styled.h1`
 `;
 
 const Container = styled.div`
-  margin-left: 5rem;
-  margin-right: 5rem;
-  margin-bottom: 5rem;
+  margin: 0 5rem 0 5rem;
+  ${media.phone`
+  margin: 0 1rem 0 1rem;
+  `}
 `;
 
 const Section = styled.div`
@@ -24,14 +26,20 @@ const Section = styled.div`
   border-radius: 4px;
   display: grid;
   margin: auto;
-  grid-template-columns: repeat(auto-fill, minmax(18rem,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(25%,1fr));
+  ${media.tablet`
+    grid-template-columns: repeat(auto-fill, minmax(50%,1fr));
+  `}
+  ${media.phone`
+    grid-template-columns: repeat(auto-fill, minmax(100%,1fr));
+  `}
   align-items: center;
   justify-content: center;
 `;
 
 const ToolContainer = styled.div`
   background: white;
-  width: 15rem;
+  width: 85%;
   height: auto;
   border-radius: 4px;
   margin: auto;

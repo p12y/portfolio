@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSpring, animated } from 'react-spring';
 import ThemeContext from '../context/ThemeContext';
+import media from '../styles/media';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -18,6 +19,24 @@ const Wrapper = styled.div`
   box-shadow: 3px 4px 5px -2px rgba(0,0,0,0.33);
   border-radius: 4px 20% 4px 20%;
   cursor: pointer;
+  ${media.phone`
+    font-size: 1.8rem;
+  `}
+`;
+
+const ButtonContainer = styled.div`
+  right: 0;
+  top: 0;
+  margin-top: 0.5rem;
+  margin-right: 2rem;
+  position: fixed;  
+  width: 4rem;
+  height: 4rem;
+  ${media.phone`
+    margin-right: 0.5rem;
+    width: 3rem;
+    height: 3rem;
+  `}
 `;
 
 function LightButton({ onClick }) {
@@ -48,13 +67,7 @@ function ThemeButton() {
   }, []);
 
   const props = useSpring({
-    position: 'fixed',
-    width: '4rem',
-    height: '4rem',
-    top: hidden ? '-3.7rem' : '0rem',
-    right: 0,
-    marginTop: '0.5rem',
-    marginRight: '2rem',
+    marginTop: hidden ? '-97%' : '0%',
   });
 
   const renderButton = () => {
@@ -72,9 +85,11 @@ function ThemeButton() {
   }
 
   return (
-    <animated.div onMouseEnter={() => setHidden(false)} style={props}>
-      {renderButton()}
-    </animated.div>
+    <ButtonContainer>
+      <animated.div onMouseEnter={() => setHidden(false)} style={{ ...props, height: '100%' }}>
+        {renderButton()}
+      </animated.div>
+    </ButtonContainer>
   );
 }
 

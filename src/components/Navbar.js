@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import media from '../styles/media';
 
 const Wrapper = styled.div`
   position: fixed;
@@ -11,6 +12,7 @@ const Wrapper = styled.div`
   top: 0;
   left: 0;
   background: ${props => props.theme.nav.background};
+  ${media.phone`display: none;`}
 `;
 
 const Button = styled.div`
@@ -19,7 +21,6 @@ const Button = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 `;
 
 const HomeButton = styled(Button)`
@@ -38,6 +39,7 @@ const IconButton = styled(Button)`
 `;
 
 const HoverCircle = styled.div`
+  cursor: pointer;
   transition: background-color 0.1s ease;
   border-radius: 50%;
   display: flex;
