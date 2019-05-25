@@ -123,26 +123,28 @@ function Tools() {
   ];
 
   const [trail, set] = useTrail(4, () => { return { opacity: 0, transform: 'scale(0)' } });
+  const animateIn = () => set({ opacity: 1, transform: 'scale(1)' });
 
   const cards = [
-    <ToolCard title="Languages" tools={languages} />,
-    <ToolCard title="Frameworks" tools={frameworks} />,
-    <ToolCard title="Databases" tools={databases} />,
-    <ToolCard title="Testing" tools={testing} />,
-  ];
+    { title: 'Languages', tools: languages },
+    { title: 'Frameworks', tools: frameworks },
+    { title: 'Databases', tools: databases },
+    { title: 'Testing', tools: testing },
+  ]
 
   return (
     <Container>
       <Title>Toolbox</Title>
-      <Waypoint
-        onEnter={() => set({ opacity: 1, transform: 'scale(1)' })}
-        onLeave={() => set({ opacity: 0, transform: 'scale(0)' })}
-      >
+      <Waypoint onEnter={animateIn} >
         <Section>
-          {trail.map((props, index) =>
-            <div style={{ alignSelf: 'start' }}>
-              <animated.div style={props}>{cards[index]}</animated.div>
-            </div>)}
+          {trail.map((props, index) => {
+            const card = cards[index];
+            return (
+              <animated.div key={card.title} style={{...props, alignSelf: 'start' }}>
+                <ToolCard title={card.title} tools={card.tools}/>
+              </animated.div>
+            );
+          })}
         </Section>
       </Waypoint>
     </Container>
