@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Waypoint } from 'react-waypoint';
-import { useTrail, animated } from 'react-spring';
+import { useTrail, animated, config } from 'react-spring';
 import media from 'styles/media';
 import Title from './styled/Title';
 import Container from './styled/Container';
@@ -71,7 +71,7 @@ const FavoritesSection = styled.div`
   align-items: space-between;
 `;
 
-const Favorite = styled.img`
+const Favorite = styled.div`
   width: 30%;
   margin: auto;
 `;
@@ -124,9 +124,6 @@ function Tools() {
     'Chai',
   ];
 
-  const [trail, set] = useTrail(4, () => { return { opacity: 0, transform: 'scale(0)' } });
-  const animateIn = () => set({ opacity: 1, transform: 'scale(1)' });
-
   const cards = [
     { title: 'Languages', tools: languages },
     { title: 'Frameworks', tools: frameworks },
@@ -140,12 +137,25 @@ function Tools() {
     { alt: 'jest', src: jestImage },
   ];
 
+  const [toolsTrail, setToolsTrail] = useTrail(cards.length,
+    () => {
+      return { config: config.gentle, opacity: 0, transform: 'scale(0)' }
+    });
+
+  const [favoritesTrail, setFavoritesTrail] = useTrail(favorites.length,
+    () => {
+      return { config: config.gentle, opacity: 0, transform: 'scale(0)' }
+    });
+
+  const animateFavoritesIn = () => setFavoritesTrail({ opacity: 1, transform: 'scale(1)' });
+  const animateToolsIn = () => setToolsTrail({ opacity: 1, transform: 'scale(1)' });
+
   return (
     <Container>
       <Title>Toolbox</Title>
-      <Waypoint onEnter={animateIn} >
+      <Waypoint onEnter={animateToolsIn} >
         <Section>
-          {trail.map((props, index) => {
+          {toolsTrail.map((props, index) => {
             const card = cards[index];
             return (
               <animated.div key={card.title} style={{ ...props, alignSelf: 'start' }}>
@@ -156,11 +166,18 @@ function Tools() {
         </Section>
       </Waypoint>
       <Title>Current favourites</Title>
-      <FavoritesSection>
-        {favorites.map(favorite =>
-          <Favorite alt={favorite.alt} key={favorite.alt} src={favorite.src} />
-        )}
-      </FavoritesSection>
+      <Waypoint onEnter={animateFavoritesIn}>
+        <FavoritesSection>
+          {favoritesTrail.map((props, index) => {
+            const favorite = favorites[index];
+            return (
+              <Favorite key={favorite.alt}>
+                <animated.img style={{ ...props, width: '100%' }} alt={favorite.alt} src={favorite.src} />
+              </Favorite>
+            );
+          })}
+        </FavoritesSection>
+      </Waypoint>
     </Container>
   );
 }
