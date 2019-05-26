@@ -3,21 +3,11 @@ import styled from 'styled-components';
 import { Waypoint } from 'react-waypoint';
 import { useTrail, animated } from 'react-spring';
 import media from 'styles/media';
-
-const Title = styled.h1`
-  color: ${props => props.theme.titleColor};
-  font-family: 'Space Mono', monospace;
-  -webkit-box-shadow: inset 0 -6px 0 rgba(246,43,84, 1);
-  box-shadow: inset 0 -6px 0 rgba(246,43,84, 1);
-  display: inline-block;
-`;
-
-const Container = styled.div`
-  margin: 0 5rem 0 5rem;
-  ${media.phone`
-  margin: 0 1rem 0 1rem;
-  `}
-`;
+import Title from './styled/Title';
+import Container from './styled/Container';
+import reactImage from 'images/react.png';
+import firebaseImage from 'images/firebase.png';
+import jestImage from 'images/jest.png';
 
 const Section = styled.div`
   width: auto;
@@ -26,6 +16,7 @@ const Section = styled.div`
   border-radius: 4px;
   display: grid;
   margin: auto;
+  margin-bottom: 3rem;
   grid-template-columns: repeat(auto-fill, minmax(25%,1fr));
   ${media.tablet`
     grid-template-columns: repeat(auto-fill, minmax(50%,1fr));
@@ -72,6 +63,17 @@ const Ul = styled.ul`
 const Li = styled.li`
   padding: 0.5rem;
   font-family: 'Open Sans', sans-serif;
+`;
+
+const FavoritesSection = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: space-between;
+`;
+
+const Favorite = styled.img`
+  width: 30%;
+  margin: auto;
 `;
 
 function ToolCard({ title, tools }) {
@@ -130,7 +132,13 @@ function Tools() {
     { title: 'Frameworks', tools: frameworks },
     { title: 'Databases', tools: databases },
     { title: 'Testing', tools: testing },
-  ]
+  ];
+
+  const favorites = [
+    { alt: 'react', src: reactImage },
+    { alt: 'firebase', src: firebaseImage },
+    { alt: 'jest', src: jestImage },
+  ];
 
   return (
     <Container>
@@ -140,13 +148,19 @@ function Tools() {
           {trail.map((props, index) => {
             const card = cards[index];
             return (
-              <animated.div key={card.title} style={{...props, alignSelf: 'start' }}>
-                <ToolCard title={card.title} tools={card.tools}/>
+              <animated.div key={card.title} style={{ ...props, alignSelf: 'start' }}>
+                <ToolCard title={card.title} tools={card.tools} />
               </animated.div>
             );
           })}
         </Section>
       </Waypoint>
+      <Title>Current favourites</Title>
+      <FavoritesSection>
+        {favorites.map(favorite =>
+          <Favorite alt={favorite.alt} key={favorite.alt} src={favorite.src} />
+        )}
+      </FavoritesSection>
     </Container>
   );
 }
