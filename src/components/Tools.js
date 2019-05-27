@@ -68,10 +68,12 @@ const FavoritesSection = styled.div`
   justify-content: center;
   align-items: space-between;
   margin: 0;
+  margin-bottom: 5rem;
 `;
 
 const Favorite = styled.img`
   width: 20%;
+  height: 20%;
   margin: auto;
 `;
 

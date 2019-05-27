@@ -14,6 +14,7 @@ const H1 = styled.h1`
 const Container = styled.div`
   width: auto;
   display: inline-block;
+  margin-bottom: 1rem;
 `;
 
 const underlineStyle = {

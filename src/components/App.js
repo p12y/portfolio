@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import ThemeButton from './ThemeButton';
 import About from './About';
 import Tools from './Tools';
+import Work from './Work';
 import styled from 'styled-components';
 import media from 'styles/media';
 
@@ -19,6 +20,7 @@ function App() {
       <Main>
         <About />
         <Tools />
+        <Work />
         <ThemeButton />
       </Main>
     </>
