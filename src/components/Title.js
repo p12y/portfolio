@@ -27,10 +27,10 @@ function Title({ text }) {
   const [toggle, setToggle] = useState(false);
   const props = useSpring({
     to: async (next) => {
-      await next({ opacity: toggle ? 1 : 0, transform: toggle ? 'scale(1)' : 'scale(0)', config: config.gentle });
-      await next({ width: toggle ? '100%' : '0%', config: config.slow });
+      await next({ opacity: toggle ? 1 : 0, config: config.gentle });
+      await next({ width: toggle ? '100%' : '0%', config: config.default });
     },
-    from: { opacity: 0, transform: 'scale(0)', width: '0%' }
+    from: { opacity: 0, width: '0%' }
   });
 
   return (
