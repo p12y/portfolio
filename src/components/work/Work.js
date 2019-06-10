@@ -38,7 +38,7 @@ function Work() {
         I've created full-stack applications from the ground up, built APIs and CLIs using Node and worked with a number of front-end JS frameworks, including React, Vue and Angular.
         I'm always trying to improve workflows for myself and the team and have built Chrome extensions and browser automation tools to speed up and automate repetative tasks for myself and the team.
       </WorkInfo>
-      <WorkInfo>Check out my recent projects:</WorkInfo>
+      <WorkInfo>Check out some recent projects:</WorkInfo>
       <Grid>
         {workItems.map(props => (
           <WorkCard key={props.title} {...props} />
