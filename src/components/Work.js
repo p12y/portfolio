@@ -10,14 +10,17 @@ const Grid = styled.div`
   grid-gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
   ${media.tablet`
-    grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(60%, 1fr));
   `}
+  ${media.phone`
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+`}
 `;
 
 const WorkCard = styled.div`
   position: relative;
-  width: 80%;
-  height: 18rem;
+  width: 100%;
+  height: 15rem;
   margin: auto;
   background: white;
   border-radius: 4px;
