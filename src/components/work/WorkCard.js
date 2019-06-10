@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import WorkModal from './WorkModal';
 
 const Card = styled.div`
   cursor: pointer;
@@ -22,10 +23,20 @@ const Title = styled.h2`
 `;
 
 const WorkCard = (props) => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleClick = () => {
+    document.querySelector('body').style.overflow = !modalOpen ? 'hidden' : 'initial';
+    setModalOpen(!modalOpen);
+  };
+
   return (
-    <Card {...props}>
-      <Title>{props.title}</Title>
-    </Card>
+    <>
+      <WorkModal toggleOpen={handleClick} {...props} modalOpen={modalOpen} />
+      <Card onClick={handleClick} {...props}>
+        <Title>{props.title}</Title>
+      </Card>
+    </>
   );
 }
 
