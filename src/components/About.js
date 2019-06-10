@@ -21,7 +21,7 @@ const TextContainer = styled.div`
 `;
 
 const ColorSpan = styled.span`
-  color: ${props => props.color}
+  color: ${({ theme }) => theme.colors.primary}
 `;
 
 const FindOutMore = styled.div`
@@ -51,7 +51,7 @@ function About() {
               setArrowVisible(currentPosition === 'inside');
             }}
           />
-          <H1>I’m <ColorSpan color="#F62B54">Peter Tyldesley</ColorSpan>, full-stack developer,
+          <H1>I’m <ColorSpan>Peter Tyldesley</ColorSpan>, full-stack developer,
             <br />full-time tinkerer and creator of things. 👊
           </H1>
         </TextContainer>

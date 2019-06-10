@@ -27,7 +27,7 @@ const HomeButton = styled(Button)`
   color: white;
   font-weight: bold;
   font-family: 'Space Mono', monospace;
-  background: #F62B54;
+  background: ${({ theme }) => theme.colors.primary};
 `;
 
 const IconButton = styled(Button)`

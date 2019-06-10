@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 import { useSpring, animated, config } from 'react-spring';
 import { Waypoint } from 'react-waypoint';
 
@@ -17,13 +17,13 @@ const Container = styled.div`
   margin-bottom: 1rem;
 `;
 
-const underlineStyle = {
-  display: 'inline-block',
-  boxShadow: 'inset 0 -6px 0 rgba(246,43,84, 1)',
-  margin: '1em 0 1em 0',
-};
+function Title({ text, theme }) {
+  const underlineStyle = {
+    display: 'inline-block',
+    boxShadow: `inset 0 -6px 0 ${theme.colors.primary}`,
+    margin: '1em 0 1em 0',
+  };
 
-function Title({ text }) {
   const [toggle, setToggle] = useState(false);
   const props = useSpring({
     to: async (next) => {
@@ -44,4 +44,4 @@ function Title({ text }) {
   );
 }
 
-export default Title;
+export default withTheme(Title);

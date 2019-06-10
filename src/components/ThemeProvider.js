@@ -12,11 +12,11 @@ const themes = {
     nav: {
       hoverCircle: '#ccc',
       background: '#ddd',
-      icon: 'rgb(46, 45, 47)',
+      icon: '#2e2d2f',
     },
   },
   dark: {
-    background: 'rgb(46, 45, 47)',
+    background: '#2e2d2f',
     titleColor: '#fff',
     nav: {
       hoverCircle: '#3c3c3c',
@@ -35,6 +35,10 @@ const shared = {
     title: '"Space Mono", monospace',
     body: '"Open Sans", sans-serif',
   },
+  colors: {
+    primary: '#F62B54',
+    secondary: '#00bee0',
+  }
 };
 
 export default ({ children }) => {
