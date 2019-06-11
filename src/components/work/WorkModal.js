@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import media from 'styles/media';
 import "react-image-gallery/styles/css/image-gallery.css";
 import './imageGalleryOverrides.css';
+import Tag from 'components/styled/Tag';
 
 const Overlay = styled.div`
   display: ${props => props.modalOpen ? 'block' : 'none'};
@@ -110,6 +111,10 @@ const ExitButton = styled.div`
   z-index: 3;
 `;
 
+const Tags = styled.p`
+  text-align: center;
+`;
+
 function WorkModal(props) {
   return (
     <Overlay
@@ -129,13 +134,21 @@ function WorkModal(props) {
           </TextContainer>
         </InfoContainer>
         <ImagesContainer>
-          <ImageGallery
-            items={props.project.images}
-            showBullets={true}
-            showThumbnails={false}
-            showFullscreenButton={false}
-            showPlayButton={false}
-          />
+          <div style={{ width: '80%' }}>
+            <ImageGallery
+              items={props.project.images}
+              showBullets={true}
+              showThumbnails={false}
+              showFullscreenButton={false}
+              showPlayButton={false}
+            />
+            <Tags>
+              {props.project.tags.map((tag, index) => <>
+                <Tag>{tag}</Tag>{index === props.project.tags.length - 1 ? '' : ' '}
+              </>)}
+            </Tags>
+          </div>
+
         </ImagesContainer>
       </Container>
     </Overlay>

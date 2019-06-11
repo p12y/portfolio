@@ -16,6 +16,10 @@ export default [
         thumbnail: 'http://lorempixel.com/250/150/nature/2/',
       }
     ],
+    tags: [
+      'React',
+      'Firebase',
+    ],
   },
   {
     projectTitle: 'Test 2',
@@ -29,6 +33,10 @@ export default [
         original: 'http://lorempixel.com/1000/600/nature/4/',
       }
     ],
+    tags: [
+      'React',
+      'MongoDB',
+    ],
   },
   {
     projectTitle: 'Test 3',
@@ -41,6 +49,9 @@ export default [
       {
         original: 'http://lorempixel.com/1000/600/nature/6/',
       }
+    ],
+    tags: [
+      'NodeJS',
     ],
   },
 ];
