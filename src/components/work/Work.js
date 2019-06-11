@@ -20,13 +20,13 @@ const Grid = styled.div`
 `;
 
 const WorkInfo = styled.p`
-  font-family: ${({ theme }) => theme.fonts.body};
   color: ${({ theme }) => theme.titleColor};
-  text-align: center;
-  margin-top: 0;
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1em;
-  margin-bottom: 2rem;
   line-height: 1.5em;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  text-align: center;
 `;
 
 function Work() {
@@ -41,7 +41,11 @@ function Work() {
       <WorkInfo>Check out some recent projects:</WorkInfo>
       <Grid>
         {workItems.map(props => (
-          <WorkCard key={props.title} {...props} />
+          <WorkCard
+            key={props.projectTitle}
+            projectTitle={props.projectTitle}
+            background={props.background}
+          />
         ))}
       </Grid>
     </Container>

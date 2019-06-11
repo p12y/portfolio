@@ -3,38 +3,45 @@ import styled from 'styled-components';
 import WorkModal from './WorkModal';
 
 const Card = styled.div`
-  cursor: pointer;
-  position: relative;
-  width: 100%;
-  height: 15rem;
-  margin: auto;
-  background: white;
-  border-radius: ${({ theme }) => theme.borderRadius};
+  align-items: center;
   background: #2BC0E4; /* fallback for old browsers */
   background: ${props => props.background};
+  border-radius: ${({ theme }) => theme.borderRadius};
+  cursor: pointer;
   display: flex;
-  align-items: center;
+  height: 15rem;
   justify-content: center;
+  margin: auto;
+  position: relative;
+  width: 100%;
 `;
 
 const Title = styled.h2`
-  font-family: ${({ theme }) => theme.fonts.title};
   color: white;
+  font-family: ${({ theme }) => theme.fonts.title};
 `;
 
 const WorkCard = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleClick = () => {
+  const toggleModalOpen = () => {
     document.querySelector('body').style.overflow = !modalOpen ? 'hidden' : 'initial';
     setModalOpen(!modalOpen);
   };
 
   return (
     <>
-      <WorkModal toggleOpen={handleClick} {...props} modalOpen={modalOpen} />
-      <Card onClick={handleClick} {...props}>
-        <Title>{props.title}</Title>
+      <WorkModal
+        toggleModalOpen={toggleModalOpen}
+        modalOpen={modalOpen}
+        background={props.background}
+        projectTitle={props.projectTitle}
+      />
+      <Card
+        onClick={toggleModalOpen}
+        background={props.background}
+      >
+        <Title>{props.projectTitle}</Title>
       </Card>
     </>
   );
