@@ -8,6 +8,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-image-gallery": "^0.8.17",
     "react-scripts": "3.0.1",
     "react-spring": "^8.0.20",
     "react-visibility-sensor": "^5.0.2",

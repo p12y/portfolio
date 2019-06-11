@@ -54,7 +54,7 @@ export default ({ children }) => {
       mode,
       theme: themes[mode],
     }}>
-      <ThemeProvider theme={{ ...shared, ...themes[mode] }}>
+      <ThemeProvider theme={{ mode, ...shared, ...themes[mode] }}>
         {children}
       </ThemeProvider>
     </ThemeContext.Provider>

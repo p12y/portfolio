@@ -14,6 +14,7 @@ import {
   faSun,
   faMoon,
   faLevelDownAlt,
+  faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -23,6 +24,7 @@ library.add(
   faSun,
   faMoon,
   faLevelDownAlt,
+  faTimes,
 );
 
 ReactDOM.render(
