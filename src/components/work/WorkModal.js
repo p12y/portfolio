@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import ImageGallery from 'react-image-gallery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useSpring, animated, config } from 'react-spring';
 import media from 'styles/media';
 import "react-image-gallery/styles/css/image-gallery.css";
 import './imageGalleryOverrides.css';
 import Tag from 'components/styled/Tag';
 
-const Overlay = styled.div`
-  display: ${props => props.modalOpen ? 'block' : 'none'};
+const Overlay = styled(animated.div)`
   height: 100%;
   left: 0;
   position: fixed;
@@ -55,7 +55,7 @@ const Container = styled.div`
   `}
 `;
 
-const ImagesContainer = styled.div`
+const ImagesContainer = styled(animated.div)`
   align-items: center;
   display: flex;
   grid-area: images;
@@ -79,7 +79,7 @@ const InfoContainer = styled.div`
   justify-content: center;
 `;
 
-const TextContainer = styled.div`
+const TextContainer = styled(animated.div)`
   color: white;
   padding-right: 2em;
   text-align: center;
@@ -100,7 +100,7 @@ const Info = styled.p`
   font-family: ${({ theme }) => theme.fonts.body};
 `;
 
-const ExitButton = styled.div`
+const ExitButton = styled(animated.div)`
   color: white;
   cursor: pointer;
   font-size: 2em
@@ -116,24 +116,55 @@ const Tags = styled.p`
 `;
 
 function WorkModal(props) {
+  const openSpringProps = useSpring({
+    immediate: props.modalOpen ? false : true,
+    visibility: props.modalOpen ? 'visible' : 'hidden',
+    opacity: props.modalOpen ? 1 : 0,
+  });
+
+  const sharedSpringProps = {
+    immediate: props.modalOpen ? false : true,
+    opacity: props.modalOpen ? 1 : 0,
+    transform: props.modalOpen ? 'scale(1)' : 'scale(0.5)',
+    scale: props.modalOpen ? 1 : 0,
+    config: config.gentle,
+  };
+
+  const textSpringProps = useSpring({
+    ...sharedSpringProps,
+    config: config.gentle,
+    delay: 200,
+  });
+
+  const imageSpringProps = useSpring({
+    ...sharedSpringProps,
+    config: config.default,
+  });
+
+  const exitSpringProps = useSpring({
+    ...sharedSpringProps,
+    transform: props.modalOpen ? 'scale(1)' : 'scale(0)',
+    config: config.gentle,
+  });
+
   return (
     <Overlay
-      modalOpen={props.modalOpen}
+      style={openSpringProps}
     >
       <OverlayBackground
         background={props.project.background}
       />
-      <ExitButton onClick={props.toggleModalOpen}>
+      <ExitButton onClick={props.toggleModalOpen} style={exitSpringProps}>
         <FontAwesomeIcon icon="times" />
       </ExitButton>
       <Container>
         <InfoContainer>
-          <TextContainer>
+          <TextContainer style={textSpringProps}>
             <Title>{props.project.projectTitle}</Title>
             <Info>{props.project.projectInfo}</Info>
           </TextContainer>
         </InfoContainer>
-        <ImagesContainer>
+        <ImagesContainer style={imageSpringProps}>
           <div style={{ width: '80%' }}>
             <ImageGallery
               items={props.project.images}
@@ -143,12 +174,13 @@ function WorkModal(props) {
               showPlayButton={false}
             />
             <Tags>
-              {props.project.tags.map((tag, index) => <>
-                <Tag>{tag}</Tag>{index === props.project.tags.length - 1 ? '' : ' '}
-              </>)}
+              {props.project.tags.map((tag, index) => (
+                <span key={tag}>
+                  <Tag>{tag}</Tag>{index === props.project.tags.length - 1 ? '' : ' '}
+                </span>
+              ))}
             </Tags>
           </div>
-
         </ImagesContainer>
       </Container>
     </Overlay>
