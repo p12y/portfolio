@@ -24,13 +24,41 @@ const OverlayBackground = styled.div`
 
 const Container = styled.div`
   position: relative;
+  height: 100%;
   z-index: 2;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: auto;
+  grid-template-areas: "images info"
+`;
+
+const ImagesContainer = styled.div`
+  grid-area: images;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const LargeImage = styled.div`
+  width: 80%;
+  height: 40%;
+  background: white;
+  border-radius: 4px;
+`;
+
+const InfoContainer = styled.div`
+  grid-area: info;
+  text-align: center;
+  color: white;
+  padding: 30vh 5em 0 0;
 `;
 
 const Title = styled.h2`
-  color: white;
   font-family: ${({ theme }) => theme.fonts.title};
-  z-index: 4;
+`;
+
+const Info = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
 `;
 
 function WorkModal(props) {
@@ -40,10 +68,16 @@ function WorkModal(props) {
       modalOpen={props.modalOpen}
     >
       <OverlayBackground
-        background={props.background}
+        background={props.project.background}
       />
       <Container>
-        <Title>{props.projectTitle}</Title>
+        <ImagesContainer>
+          <LargeImage></LargeImage>
+        </ImagesContainer>
+        <InfoContainer>
+          <Title>{props.project.projectTitle}</Title>
+          <Info>{props.project.projectInfo}</Info>
+        </InfoContainer>
       </Container>
     </Overlay>
   );

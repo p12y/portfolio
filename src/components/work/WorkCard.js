@@ -34,14 +34,13 @@ const WorkCard = (props) => {
       <WorkModal
         toggleModalOpen={toggleModalOpen}
         modalOpen={modalOpen}
-        background={props.background}
-        projectTitle={props.projectTitle}
+        project={props.project}
       />
       <Card
         onClick={toggleModalOpen}
-        background={props.background}
+        background={props.project.background}
       >
-        <Title>{props.projectTitle}</Title>
+        <Title>{props.project.projectTitle}</Title>
       </Card>
     </>
   );

@@ -40,11 +40,10 @@ function Work() {
       </WorkInfo>
       <WorkInfo>Check out some recent projects:</WorkInfo>
       <Grid>
-        {workItems.map(props => (
+        {workItems.map(project => (
           <WorkCard
-            key={props.projectTitle}
-            projectTitle={props.projectTitle}
-            background={props.background}
+            key={project.projectTitle}
+            project={project}
           />
         ))}
       </Grid>
