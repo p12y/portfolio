@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ImageGallery from 'react-image-gallery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import media from 'styles/media';
 import "react-image-gallery/styles/css/image-gallery.css";
 import './imageGalleryOverrides.css';
 
@@ -41,20 +42,53 @@ const Container = styled.div`
   grid-template-columns: 60% 40%;
   height: 100%;
   position: relative;
+  ${media.tablet`
+    grid-template-areas: "info" "images";
+    grid-template-columns: 100%;
+    grid-template-rows: 50%;
+  `}
+  ${media.phone`
+    grid-template-areas: "info" "images";
+    grid-template-columns: 100%;
+    grid-template-rows: 50%;
+  `}
 `;
 
 const ImagesContainer = styled.div`
   align-items: center;
   display: flex;
   grid-area: images;
-  justify-content: center;
+  justify-content: flex-end;
+  padding-right: 2em;
+  ${media.tablet`
+    justify-content: center;
+    padding-right: 2em;
+    padding: 0;
+  `}
+  ${media.phone`
+    justify-content: center;
+    padding: 0;
+  `}
 `;
 
 const InfoContainer = styled.div`
-  color: white;
+  align-items: center;
+  display: flex;
   grid-area: info;
-  padding: 30vh 5em 0 0;
+  justify-content: center;
+`;
+
+const TextContainer = styled.div`
+  color: white;
+  padding-right: 2em;
   text-align: center;
+  width: 80%;
+  ${media.tablet`
+    padding: 0;
+  `}
+  ${media.phone`
+    padding: 0;
+  `}
 `;
 
 const Title = styled.h2`
@@ -88,6 +122,12 @@ function WorkModal(props) {
         <FontAwesomeIcon icon="times" />
       </ExitButton>
       <Container>
+        <InfoContainer>
+          <TextContainer>
+            <Title>{props.project.projectTitle}</Title>
+            <Info>{props.project.projectInfo}</Info>
+          </TextContainer>
+        </InfoContainer>
         <ImagesContainer>
           <ImageGallery
             items={props.project.images}
@@ -97,10 +137,6 @@ function WorkModal(props) {
             showPlayButton={false}
           />
         </ImagesContainer>
-        <InfoContainer>
-          <Title>{props.project.projectTitle}</Title>
-          <Info>{props.project.projectInfo}</Info>
-        </InfoContainer>
       </Container>
     </Overlay>
   );
