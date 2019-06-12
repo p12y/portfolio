@@ -39,7 +39,7 @@ const ViewMoreContainer = styled.div`
 
 function Work() {
   return (
-    <Container>
+    <Container id="work">
       <Title text="Work" />
       <WorkInfo>
         My journey as a web developer started over 4 years ago. Since then, I've had the opportunity to work on many interesting projects.

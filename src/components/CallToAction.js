@@ -30,7 +30,7 @@ function CallToAction() {
   return (
     <>
       <Background />
-      <Paper>
+      <Paper id="contact">
         <Title>Get in touch</Title>
         <GradientButton
           inverted

@@ -52,9 +52,9 @@ const HoverCircle = styled.div`
   }
 `;
 
-function NavButton({ icon }) {
+function NavButton({ icon, onClick }) {
   return (
-    <IconButton>
+    <IconButton onClick={onClick}>
       <HoverCircle>
         <FontAwesomeIcon icon={icon} />
       </HoverCircle>
@@ -63,12 +63,19 @@ function NavButton({ icon }) {
 }
 
 function Navbar() {
+  const handleClick = id => () => {
+    const element = document.querySelector(`#${id}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    };
+  };
+
   return (
     <Wrapper>
       <HomeButton>P12y</HomeButton>
-      <NavButton icon="toolbox" />
-      <NavButton icon="laptop-code" />
-      <NavButton icon="paper-plane" />
+      <NavButton icon="toolbox" onClick={handleClick('tools')} />
+      <NavButton icon="laptop-code" onClick={handleClick('work')} />
+      <NavButton icon="paper-plane" onClick={handleClick('contact')} />
     </Wrapper>
   );
 }

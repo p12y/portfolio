@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import smoothscroll from 'smoothscroll-polyfill';
 import ThemeProvider from './components/ThemeProvider';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
@@ -35,6 +36,9 @@ library.add(
   faGitlab,
   faInstagram,
 );
+
+// Add polyfill for Element.scrollIntoView() smooth scroll
+smoothscroll.polyfill();
 
 ReactDOM.render(
   <ThemeProvider>
