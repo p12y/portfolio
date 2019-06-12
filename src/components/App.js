@@ -1,11 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
 import Navbar from './Navbar';
 import ThemeButton from './ThemeButton';
 import About from './About';
 import Tools from './Tools';
 import Work from './work/Work';
-import styled from 'styled-components';
 import media from 'styles/media';
+import Testimonials from 'components/testimonials/Testimonials';
 
 function App() {
   const Main = styled.div`
@@ -21,6 +22,7 @@ function App() {
         <About />
         <Tools />
         <Work />
+        <Testimonials />
         <ThemeButton />
       </Main>
     </>

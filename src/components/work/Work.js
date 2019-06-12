@@ -36,6 +36,7 @@ const ViewMoreContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: 3rem;
+  padding-bottom: 0;
 `;
 
 function Work() {
