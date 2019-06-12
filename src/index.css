@@ -1,3 +1,10 @@
+:root {
+  --dark-bg-color: #2e2d2f;
+  --light-bg-color: #fff;
+  --primary: #F62B54;
+  --secondary: #00bee0;
+}
+
 * {
   -webkit-tap-highlight-color: transparent;
 }

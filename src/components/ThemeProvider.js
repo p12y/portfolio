@@ -7,16 +7,16 @@ import ThemeContext from 'context/ThemeContext';
  */
 const themes = {
   light: {
-    background: '#fff',
+    background: 'var(--light-bg-color)',
     titleColor: '#333',
     nav: {
       hoverCircle: '#ccc',
       background: '#ddd',
-      icon: '#2e2d2f',
+      icon: 'var(--dark-bg-color)',
     },
   },
   dark: {
-    background: '#2e2d2f',
+    background: 'var(--dark-bg-color)',
     titleColor: '#fff',
     nav: {
       hoverCircle: '#3c3c3c',
@@ -36,8 +36,8 @@ const shared = {
     body: '"Open Sans", sans-serif',
   },
   colors: {
-    primary: '#F62B54',
-    secondary: '#00bee0',
+    primary: 'var(--primary)',
+    secondary: 'var(--secondary)',
   }
 };
 

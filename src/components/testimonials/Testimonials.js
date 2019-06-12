@@ -7,7 +7,6 @@ import testimonials from 'data/testimonials';
 const TestimonialsContainer = styled.div`
   color: ${({ theme }) => theme.titleColor};
   font-family: ${({ theme }) => theme.fonts.body};
-  height: 20rem;
   margin-left: 10%;
   margin-right: 10%;
   text-align: center;
@@ -43,7 +42,7 @@ function Testimonials() {
       <Title text="Testimonials" />
       <TestimonialsContainer>
         {testimonials.map(testimonial => (
-          <div key={testimonial.name}>
+          <div style={{ paddingBottom: '3rem' }} key={testimonial.name}>
             <Avatar />
             <TestimonialText>"{testimonial.text}"</TestimonialText>
             <Name>{testimonial.name}</Name>

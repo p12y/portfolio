@@ -19,6 +19,8 @@ import {
 
 import {
   faGithub,
+  faGitlab,
+  faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
@@ -30,6 +32,8 @@ library.add(
   faLevelDownAlt,
   faTimes,
   faGithub,
+  faGitlab,
+  faInstagram,
 );
 
 ReactDOM.render(

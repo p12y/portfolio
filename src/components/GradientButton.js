@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ButtonOuter = styled.a`
   align-items: center;
@@ -34,9 +35,9 @@ const ButtonOuter = styled.a`
 `;
 
 const ButtonInner = styled.span`
-  background: ${({ theme }) => theme.background};
+  background: ${({ inverted, theme }) => inverted ? theme.titleColor : theme.background};
   border-radius: 50em;
-  color: ${({ theme }) => theme.titleColor};
+  color: ${({ inverted, theme }) => inverted ? theme.background : theme.titleColor};
   cursor: pointer;
   font-family: ${({ theme }) => theme.fonts.body};
   font-size: 1rem;
@@ -47,11 +48,12 @@ const ButtonInner = styled.span`
   white-space: nowrap;
 `;
 
-function GradientButton({ href, children }) {
+function GradientButton({ href, text, inverted, icon, target }) {
   return (
-    <ButtonOuter href={href} target="_blank" rel="noopener noreferrer">
-      <ButtonInner>
-        {children}
+    <ButtonOuter href={href} target={target || '_blank'} rel="noopener">
+      <ButtonInner inverted={inverted}>
+        {icon && <FontAwesomeIcon style={{ marginRight: '1em' }} icon={icon} />}
+        {text.toUpperCase()}
       </ButtonInner>
     </ButtonOuter>
   );

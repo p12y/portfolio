@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Title from 'components/Title';
 import Container from 'components/styled/Container';
 import media from 'styles/media';
@@ -24,7 +23,6 @@ const Grid = styled.div`
 const WorkInfo = styled.p`
   color: ${({ theme }) => theme.titleColor};
   font-family: ${({ theme }) => theme.fonts.body};
-  font-size: 1em;
   line-height: 1.5em;
   margin-top: 0;
   margin-bottom: 2rem;
@@ -46,9 +44,9 @@ function Work() {
       <WorkInfo>
         My journey as a web developer started over 4 years ago. Since then, I've had the opportunity to work on many interesting projects.
         I've created full-stack applications from the ground up, built APIs and CLIs using Node and worked with a number of front-end JS frameworks, including React, Vue and Angular.
-        I'm always trying to improve workflows for myself and the team and have built Chrome extensions and browser automation tools to speed up and automate repetative tasks for myself and the team.
+        I'm always trying to improve efficiency in the workplace and have built Chrome extensions and browser automation tools to improve workflows for myself and the team.
       </WorkInfo>
-      <WorkInfo>Check out some recent projects:</WorkInfo>
+      <WorkInfo as="h4">Check out some recent projects:</WorkInfo>
       <Grid>
         {workItems.map(project => (
           <WorkCard
@@ -58,11 +56,11 @@ function Work() {
         ))}
       </Grid>
       <ViewMoreContainer>
-        <GradientButton href="https://github.com/p12y?tab=repositories">
-          <FontAwesomeIcon
-            style={{ marginRight: '1em' }}
-            icon={['fab', 'github']}
-          />VIEW MORE ON GITHUB
+        <GradientButton
+          icon={['fab', 'github']}
+          text="view more on github"
+          href="https://github.com/p12y?tab=repositories"
+        >
         </GradientButton>
       </ViewMoreContainer>
     </Container>
