@@ -41,7 +41,7 @@ const ButtonContainer = styled.div`
 
 function LightButton({ onClick }) {
   return (
-    <Wrapper onClick={onClick} background="white">
+    <Wrapper onClick={onClick} background="var(--light-bg-color)">
       <FontAwesomeIcon icon="sun" />
     </Wrapper>
   );
@@ -49,7 +49,7 @@ function LightButton({ onClick }) {
 
 function DarkButton({ onClick }) {
   return (
-    <Wrapper onClick={onClick} background="#202B31">
+    <Wrapper onClick={onClick} background="var(--dark-bg-color)">
       <FontAwesomeIcon color="white" icon="moon" />
     </Wrapper>
   );
