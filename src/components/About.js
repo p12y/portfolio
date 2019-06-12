@@ -35,7 +35,7 @@ const FindOutMore = styled.div`
 `;
 
 const H1 = styled.h1`
-  ${media.phone`font-size: 2em;`}
+  ${media.phone`font-size: 1.6em;`}
 `;
 
 function About() {

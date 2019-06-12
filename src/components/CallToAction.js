@@ -1,10 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import GradientButton from 'components/GradientButton';
+import media from 'styles/media';
 
 const Title = styled.h1`
   font-family: ${({ theme }) => theme.fonts.title};
   margin-top: 0;
+  ${media.phone`
+    font-size: 1.6em;
+  `}
 `;
 
 const Background = styled.div`

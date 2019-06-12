@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled, { withTheme } from 'styled-components';
 import { useSpring, animated, config } from 'react-spring';
 import { Waypoint } from 'react-waypoint';
+import media from 'styles/media';
 
 const H1 = styled.h1`
   color: ${props => props.theme.titleColor};
@@ -9,6 +10,9 @@ const H1 = styled.h1`
   display: inline-block;
   margin: 0;
   white-space: nowrap;
+  ${media.phone`
+    font-size: 1.6em;
+  `}
 `;
 
 const Container = styled.div`
