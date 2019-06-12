@@ -23,7 +23,6 @@ const Paper = styled.div`
   position: relative;
   text-align: center;
   width: 70%;
-  z-index: 1;
 `;
 
 function CallToAction() {
