@@ -31,7 +31,7 @@ const OverlayBackground = styled.div`
     content: "";
     display: block;
     height: 100%;
-    opacity: ${props => props.theme.mode === 'dark' ? 0.95 : 0};
+    opacity: ${props => props.theme.mode === 'dark' ? 0.7 : 0};
     position: absolute;
     width: 100%;
   }
