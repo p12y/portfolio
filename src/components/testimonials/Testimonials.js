@@ -2,23 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 import Title from 'components/Title';
 import Container from 'components/styled/Container';
+import testimonials from 'data/testimonials';
 
 const TestimonialsContainer = styled.div`
-  text-align: center;
+  color: ${({ theme }) => theme.titleColor};
+  font-family: ${({ theme }) => theme.fonts.body};
   height: 20rem;
   margin-left: 10%;
   margin-right: 10%;
-  color: ${({ theme }) => theme.titleColor};
-  font-family: ${({ theme }) => theme.fonts.body};
+  text-align: center;
 `;
 
 const Avatar = styled.span`
-  display: inline-block;
-  width: 6rem;
-  height: 6rem;
-  border-radius: 50%;
-  margin-top: 1em;
   background: #ddd;
+  border-radius: 50%;
+  display: inline-block;
+  height: 6rem;
+  margin-top: 1em;
+  width: 6rem;
 `;
 
 const TestimonialText = styled.p`
@@ -34,19 +35,21 @@ const Name = styled.h3`
 
 const Position = styled.h4`
   margin-top: 0;
-`
+`;
 
 function Testimonials() {
   return (
     <Container>
       <Title text="Testimonials" />
       <TestimonialsContainer>
-        <Avatar />
-        <TestimonialText>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla est ullamcorper eget nulla facilisi etiam dignissim diam. Imperdiet massa tincidunt nunc pulvinar sapien et ligula."
-        </TestimonialText>
-        <Name>Test name</Name>
-        <Position>Test position, Company</Position>
+        {testimonials.map(testimonial => (
+          <div key={testimonial.name}>
+            <Avatar />
+            <TestimonialText>"{testimonial.text}"</TestimonialText>
+            <Name>{testimonial.name}</Name>
+            <Position>{`${testimonial.position}, ${testimonial.company}`}</Position>
+          </div>
+        ))}
       </TestimonialsContainer>
     </Container>
   );
