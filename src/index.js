@@ -17,6 +17,10 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 
+import {
+  faGithub,
+} from '@fortawesome/free-brands-svg-icons';
+
 library.add(
   faLaptopCode,
   faToolbox,
@@ -25,6 +29,7 @@ library.add(
   faMoon,
   faLevelDownAlt,
   faTimes,
+  faGithub,
 );
 
 ReactDOM.render(
