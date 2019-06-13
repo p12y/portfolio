@@ -12,7 +12,7 @@ const Title = styled.h1`
 `;
 
 const Background = styled.div`
-  background: #ddd;
+  background: ${({ theme }) => theme.nav.background};
   height: 10rem;
 `;
 

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import links from 'data/footerLinks';
 
 const Background = styled.div`
-  background: #ddd;
+  background: ${({ theme }) => theme.nav.background};
   display: flex;
   height: 10rem;
   justify-content: center;
@@ -17,9 +17,9 @@ const Links = styled.div`
 `;
 
 const Link = styled.a`
-  color: var(--dark-bg-color);
+  color: ${({ theme }) => theme.titleColor};
   cursor: pointer;
-  padding: 0.5em;
+  margin: 0.5em;
   text-decoration: none;
   transition: color .2s ease-in-out;
   &:hover {
@@ -29,7 +29,7 @@ const Link = styled.a`
 
 const FooterItems = styled.div`
   align-self: flex-end;
-  color: var(--dark-bg-color);
+  color: ${({ theme }) => theme.titleColor};
   font-family: ${({ theme }) => theme.fonts.body};
   padding: 0rem;
   text-align: center;

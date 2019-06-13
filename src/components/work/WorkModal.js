@@ -40,7 +40,7 @@ const OverlayBackground = styled.div`
 const Container = styled.div`
   display: grid;
   grid-template-areas: "images info";
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 50% 50%;
   height: 100%;
   position: relative;
   ${media.tablet`
@@ -59,17 +59,8 @@ const ImagesContainer = styled(animated.div)`
   align-items: center;
   display: flex;
   grid-area: images;
-  justify-content: flex-end;
-  padding-right: 2em;
-  ${media.tablet`
-    justify-content: center;
-    padding-right: 2em;
-    padding: 0;
-  `}
-  ${media.phone`
-    justify-content: center;
-    padding: 0;
-  `}
+  justify-content: center;
+  padding 2em;
 `;
 
 const InfoContainer = styled.div`
@@ -81,14 +72,11 @@ const InfoContainer = styled.div`
 
 const TextContainer = styled(animated.div)`
   color: white;
-  padding-right: 2em;
+  padding: 2em;
   text-align: center;
   width: 80%;
-  ${media.tablet`
-    padding: 0;
-  `}
   ${media.phone`
-    padding: 0;
+    padding-top: 5em;
   `}
 `;
 
@@ -165,7 +153,7 @@ function WorkModal(props) {
           </TextContainer>
         </InfoContainer>
         <ImagesContainer style={imageSpringProps}>
-          <div style={{ width: '80%' }}>
+          <div>
             <ImageGallery
               items={props.project.images}
               showBullets={true}
@@ -175,9 +163,7 @@ function WorkModal(props) {
             />
             <Tags>
               {props.project.tags.map((tag, index) => (
-                <span key={tag}>
-                  <Tag>{tag}</Tag>{index === props.project.tags.length - 1 ? '' : ' '}
-                </span>
+                <Tag key={tag}>{tag}</Tag>
               ))}
             </Tags>
           </div>

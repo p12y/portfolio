@@ -11,6 +11,7 @@ const Tag = styled.span`
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   white-space: nowrap;
+  margin: 0.2rem;
 `;
 
 export default Tag;
