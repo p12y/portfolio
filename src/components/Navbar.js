@@ -5,7 +5,6 @@ import media from 'styles/media';
 
 const Wrapper = styled.div`
   position: fixed;
-  -webkit-box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.15); 
   box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.15);
   height: 100vh;
   width: 4rem;

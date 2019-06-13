@@ -35,8 +35,6 @@ const ToolContainer = styled.div`
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   align-self: start;
-  -webkit-box-shadow: 3px 4px 5px -2px rgba(0,0,0,0.33);
-  -moz-box-shadow: 3px 4px 5px -2px rgba(0,0,0,0.33);
   box-shadow: 3px 4px 5px -2px rgba(0,0,0,0.33);
   text-align: center;
   padding-bottom: 0.5rem;
