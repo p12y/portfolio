@@ -45,7 +45,7 @@ export default ({ children }) => {
   const [mode, setMode] = useState(localStorage.getItem('mode') || 'light');
 
   useEffect(() => {
-    document.getElementsByTagName('body')[0].style.background = themes[mode].background;
+    document.querySelector('body').style.background = themes[mode].background;
   }, [mode]);
 
   return (
