@@ -3,9 +3,25 @@ import styled from 'styled-components';
 import media from 'styles/media';
 import Title from './Title';
 import Container from './styled/Container';
-import reactImage from 'images/react.png';
-import firebaseImage from 'images/firebase.png';
-import jestImage from 'images/jest.png';
+import logo1 from 'images/logos/firebase.png';
+import logo2 from 'images/logos/gcp.png';
+import logo3 from 'images/logos/git.png';
+import logo4 from 'images/logos/jest.png';
+import logo5 from 'images/logos/material-ui.png';
+import logo6 from 'images/logos/node.png';
+import logo7 from 'images/logos/react.png';
+import logo8 from 'images/logos/ts.png';
+
+const favTools = [
+  logo1,
+  logo2,
+  logo3,
+  logo4,
+  logo5,
+  logo6,
+  logo7,
+  logo8,
+];
 
 const Section = styled.div`
   width: auto;
@@ -65,14 +81,39 @@ const FavoritesSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: space-between;
-  margin: 0;
+  margin: 1rem;
   margin-bottom: 5rem;
+  flex-wrap: wrap;
+  margin-left: 20%;
+  margin-right: 20%;
+  ${media.tablet`
+  margin-left: 0;
+  margin-right: 0;
+`}
+${media.phone`
+  margin-left: 0;
+  margin-right: 0;
+`}
+`;
+
+const FavoriteContainer = styled.div`
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 `;
 
 const Favorite = styled.img`
-  width: 20%;
-  height: 20%;
-  margin: auto;
+  width: 8rem;
+  height: 8rem;
+  ${media.tablet`
+    width: 5rem;
+    height: 5rem;
+  `}
+  ${media.phone`
+    width: 5rem;
+    height: 5rem;
+  `}
 `;
 
 function ToolCard({ title, tools }) {
@@ -130,12 +171,6 @@ function Tools() {
     { title: 'Testing', tools: testing },
   ];
 
-  const favorites = [
-    { alt: 'react', src: reactImage },
-    { alt: 'firebase', src: firebaseImage },
-    { alt: 'jest', src: jestImage },
-  ];
-
   return (
     <Container id="tools">
       <Title text="Toolbox" />
@@ -143,10 +178,8 @@ function Tools() {
         {cards.map(card => <ToolCard title={card.title} tools={card.tools} key={card.title} />)}
       </Section>
 
-      <Title text="Current favourites" />
       <FavoritesSection>
-        {favorites.map(favorite =>
-          <Favorite alt={favorite.alt} src={favorite.src} key={favorite.alt} />)}
+        {favTools.map(src => <FavoriteContainer key={src}><Favorite src={src} /></FavoriteContainer>)}
       </FavoritesSection>
     </Container>
   );
