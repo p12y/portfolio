@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Waypoint } from 'react-waypoint';
+import { useTrail, animated } from 'react-spring';
 import media from 'styles/media';
 import Title from './Title';
 import Container from './styled/Container';
@@ -140,7 +142,6 @@ function Tools() {
     'JavaScript',
     'HTML/CSS',
     'Ruby',
-    'Dart',
   ];
 
   const frameworks = [
@@ -148,7 +149,6 @@ function Tools() {
     'Vue',
     'Express',
     'Rails',
-    'Flutter',
   ];
 
   const databases = [
@@ -171,12 +171,20 @@ function Tools() {
     { title: 'Testing', tools: testing },
   ];
 
+  const [trail, set] = useTrail(4, () => { return { opacity: 0, transform: 'scale(0)' } });
+
   return (
     <Container id="tools">
       <Title text="Toolbox" />
-      <Section>
-        {cards.map(card => <ToolCard title={card.title} tools={card.tools} key={card.title} />)}
-      </Section>
+      <Waypoint onEnter={() => set({ opacity: 1, transform: 'scale(1)' })} >
+        <Section>
+          {trail.map((props, index) => <div style={{ alignSelf: 'start' }}>
+            <animated.div style={props}>
+              <ToolCard {...cards[index]} />
+            </animated.div>
+          </div>)}
+        </Section>
+      </Waypoint>
 
       <FavoritesSection>
         {favTools.map(src => <FavoriteContainer key={src}><Favorite src={src} /></FavoriteContainer>)}
