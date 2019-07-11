@@ -96,7 +96,7 @@ function About() {
         </Stripes>
       </Background>
 
-      <Container>
+      <Container id="about">
         <TextContainer>
           <Waypoint
             onPositionChange={({ currentPosition }) => {

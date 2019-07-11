@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import Ink from 'react-ink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import media from 'styles/media';
 
 const Wrapper = styled.div`
   position: fixed;
-  box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.15);
+  box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.15);
   height: 100vh;
   width: 4rem;
   top: 0;
@@ -24,9 +25,11 @@ const Button = styled.div`
 
 const HomeButton = styled(Button)`
   color: white;
+  cursor: pointer;
   font-weight: bold;
   font-family: 'Space Mono', monospace;
   background: ${({ theme }) => theme.colors.primary};
+  position: relative;
 `;
 
 const IconButton = styled(Button)`
@@ -34,11 +37,12 @@ const IconButton = styled(Button)`
   background: ${props => props.theme.nav.background};
   margin-top: 1rem;
   margin-bottom: 1rem;
-  color: ${props => props.theme.nav.icon}
+  color: ${props => props.theme.nav.icon};
 `;
 
 const HoverCircle = styled.div`
   cursor: pointer;
+  position: relative;
   transition: background-color 0.1s ease;
   border-radius: 50%;
   display: flex;
@@ -47,7 +51,7 @@ const HoverCircle = styled.div`
   width: 3.5rem;
   height: 3.5rem;
   &:hover {
-    background: ${props => props.theme.nav.hoverCircle}
+    background: ${props => props.theme.nav.hoverCircle};
   }
 `;
 
@@ -55,6 +59,7 @@ function NavButton({ icon, onClick }) {
   return (
     <IconButton onClick={onClick}>
       <HoverCircle>
+        <Ink />
         <FontAwesomeIcon icon={icon} />
       </HoverCircle>
     </IconButton>
@@ -66,12 +71,15 @@ function Navbar() {
     const element = document.querySelector(`#${id}`);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-    };
+    }
   };
 
   return (
     <Wrapper>
-      <HomeButton>P12y</HomeButton>
+      <HomeButton onClick={handleClick('about')}>
+        <Ink />
+        P12y
+      </HomeButton>
       <NavButton icon="toolbox" onClick={handleClick('tools')} />
       <NavButton icon="laptop-code" onClick={handleClick('work')} />
       <NavButton icon="paper-plane" onClick={handleClick('contact')} />
