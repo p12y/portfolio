@@ -21,7 +21,7 @@ const TextContainer = styled.div`
 `;
 
 const ColorSpan = styled.span`
-  color: ${({ theme }) => theme.colors.primary}
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 const FindOutMore = styled.div`
@@ -51,33 +51,31 @@ const Stripes = styled.div`
   grid: repeat(5, 200px) / repeat(10, 1fr);
   opacity: 0.15;
   ${Stripe}:nth-child(1) {
-      grid-column: span 3;
-      background: linear-gradient(to right, #FFEDBC, #ED4264);
-      transform: skewY(-12deg);
-      transform-origin: 0;
+    grid-column: span 3;
+    background: linear-gradient(to right, #ffedbc, #ed4264);
+    transform: skewY(-12deg);
+    transform-origin: 0;
   }
   ${Stripe}:nth-child(2) {
     grid-area: 2 / span 3 / auto / -1;
     background: linear-gradient(to right, #b6fbff, #83a4d4);
     transform: skewY(12deg);
     transform-origin: 0;
-
   }
   ${Stripe}:nth-child(3) {
     grid-row: 4;
     grid-column: span 3;
-    background: linear-gradient(to right, #D7DDE8, #757F9A);
+    background: linear-gradient(to right, #d7dde8, #757f9a);
     transform: skewY(-12deg);
     transform-origin: 0;
   }
   ${Stripe}:nth-child(4) {
     grid-area: 4 / span 3 / auto / -1;
-    background: linear-gradient(to right, #FFFFFF, #EF3B36);
+    background: linear-gradient(to right, #ffffff, #ef3b36);
     transform: skewY(12deg);
     transform-origin: 0;
   }
 `;
-
 
 const H1 = styled.h1`
   ${media.phone`font-size: 1.6em;`}
@@ -105,8 +103,10 @@ function About() {
               setArrowVisible(currentPosition === 'inside');
             }}
           />
-          <H1>I’m <ColorSpan>Peter Tyldesley</ColorSpan>, full-stack developer,
-            <br />full-time tinkerer and creator of things. 👊
+          <H1>
+            I’m <ColorSpan>Peter Tyldesley</ColorSpan>, full-stack developer,
+            <br />
+            full-time tinkerer and creator of things. 👊
           </H1>
         </TextContainer>
       </Container>

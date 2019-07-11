@@ -14,16 +14,7 @@ import logo6 from 'images/logos/node.png';
 import logo7 from 'images/logos/react.png';
 import logo8 from 'images/logos/ts.png';
 
-const favTools = [
-  logo1,
-  logo2,
-  logo3,
-  logo4,
-  logo5,
-  logo6,
-  logo7,
-  logo8,
-];
+const favTools = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8];
 
 const Section = styled.div`
   width: auto;
@@ -33,7 +24,7 @@ const Section = styled.div`
   display: grid;
   margin: auto;
   margin-bottom: 5rem;
-  grid-template-columns: repeat(auto-fill, minmax(25%,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
   ${media.tablet`
     grid-template-columns: repeat(auto-fill, minmax(50%,1fr));
   `}
@@ -53,7 +44,7 @@ const ToolContainer = styled.div`
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   align-self: start;
-  box-shadow: 3px 4px 5px -2px rgba(0,0,0,0.33);
+  box-shadow: 3px 4px 5px -2px rgba(0, 0, 0, 0.33);
   text-align: center;
   padding-bottom: 0.5rem;
   padding-top: 1px;
@@ -92,7 +83,7 @@ const FavoritesSection = styled.div`
   margin-left: 0;
   margin-right: 0;
 `}
-${media.phone`
+  ${media.phone`
   margin-left: 0;
   margin-right: 0;
 `}
@@ -122,7 +113,9 @@ function ToolCard({ title, tools }) {
   return (
     <ToolContainer>
       <Ul>
-        <li><ToolHeader>{title}</ToolHeader></li>
+        <li>
+          <ToolHeader>{title}</ToolHeader>
+        </li>
         <Hr />
         {tools.map((tool, index) => {
           return (
@@ -138,32 +131,10 @@ function ToolCard({ title, tools }) {
 }
 
 function Tools() {
-  const languages = [
-    'JavaScript',
-    'HTML/CSS',
-    'Ruby',
-  ];
-
-  const frameworks = [
-    'React',
-    'Vue',
-    'Express',
-    'Rails',
-  ];
-
-  const databases = [
-    'MongoDB',
-    'PostgreSQL',
-    'Firebase',
-  ];
-
-  const testing = [
-    'Jest',
-    'Enzyme',
-    'Mocha',
-    'Chai',
-  ];
-
+  const languages = ['JavaScript', 'HTML/CSS', 'Ruby'];
+  const frameworks = ['React', 'Vue', 'Express', 'Rails'];
+  const databases = ['MongoDB', 'PostgreSQL', 'Firebase'];
+  const testing = ['Jest', 'Enzyme', 'Mocha', 'Chai'];
   const cards = [
     { title: 'Languages', tools: languages },
     { title: 'Frameworks', tools: frameworks },
@@ -171,23 +142,31 @@ function Tools() {
     { title: 'Testing', tools: testing },
   ];
 
-  const [trail, set] = useTrail(4, () => { return { opacity: 0, transform: 'scale(0)' } });
+  const [trail, set] = useTrail(4, () => {
+    return { opacity: 0, transform: 'scale(0)' };
+  });
 
   return (
     <Container id="tools">
       <Title text="Toolbox" />
-      <Waypoint onEnter={() => set({ opacity: 1, transform: 'scale(1)' })} >
+      <Waypoint onEnter={() => set({ opacity: 1, transform: 'scale(1)' })}>
         <Section>
-          {trail.map((props, index) => <div style={{ alignSelf: 'start' }}>
-            <animated.div style={props}>
-              <ToolCard {...cards[index]} />
-            </animated.div>
-          </div>)}
+          {trail.map((props, index) => (
+            <div key={cards[index].title} style={{ alignSelf: 'start' }}>
+              <animated.div style={props}>
+                <ToolCard {...cards[index]} />
+              </animated.div>
+            </div>
+          ))}
         </Section>
       </Waypoint>
 
       <FavoritesSection>
-        {favTools.map(src => <FavoriteContainer key={src}><Favorite src={src} /></FavoriteContainer>)}
+        {favTools.map(src => (
+          <FavoriteContainer key={src}>
+            <Favorite src={src} />
+          </FavoriteContainer>
+        ))}
       </FavoritesSection>
     </Container>
   );
