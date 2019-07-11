@@ -24,7 +24,7 @@ const Container = styled.div`
 function Title({ text, theme }) {
   const underlineStyle = {
     display: 'inline-block',
-    boxShadow: `inset 0 -6px 0 ${theme.colors.primary}`,
+    borderBottom: `6px solid ${theme.colors.primary}`,
     margin: '1em 0 1em 0',
   };
 
