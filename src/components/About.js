@@ -49,7 +49,6 @@ const Stripes = styled.div`
   position: relative;
   display: grid;
   grid: repeat(5, 200px) / repeat(10, 1fr);
-  background: ${props => props.theme.background};
   opacity: 0.15;
   ${Stripe}:nth-child(1) {
       grid-column: span 3;
