@@ -34,6 +34,52 @@ const FindOutMore = styled.div`
   text-align: center;
 `;
 
+const Background = styled.div`
+  position: absolute;
+  z-index: -1;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+`;
+
+const Stripe = styled.div``;
+
+const Stripes = styled.div`
+  position: relative;
+  display: grid;
+  grid: repeat(5, 200px) / repeat(10, 1fr);
+  background: ${props => props.theme.background};
+  opacity: 0.15;
+  ${Stripe}:nth-child(1) {
+      grid-column: span 3;
+      background: linear-gradient(to right, #FFEDBC, #ED4264);
+      transform: skewY(-12deg);
+      transform-origin: 0;
+  }
+  ${Stripe}:nth-child(2) {
+    grid-area: 2 / span 3 / auto / -1;
+    background: linear-gradient(to right, #b6fbff, #83a4d4);
+    transform: skewY(12deg);
+    transform-origin: 0;
+
+  }
+  ${Stripe}:nth-child(3) {
+    grid-row: 4;
+    grid-column: span 3;
+    background: linear-gradient(to right, #D7DDE8, #757F9A);
+    transform: skewY(-12deg);
+    transform-origin: 0;
+  }
+  ${Stripe}:nth-child(4) {
+    grid-area: 4 / span 3 / auto / -1;
+    background: linear-gradient(to right, #FFFFFF, #EF3B36);
+    transform: skewY(12deg);
+    transform-origin: 0;
+  }
+`;
+
+
 const H1 = styled.h1`
   ${media.phone`font-size: 1.6em;`}
 `;
@@ -44,6 +90,15 @@ function About() {
 
   return (
     <>
+      <Background>
+        <Stripes>
+          <Stripe />
+          <Stripe />
+          <Stripe />
+          <Stripe />
+        </Stripes>
+      </Background>
+
       <Container>
         <TextContainer>
           <Waypoint
@@ -56,6 +111,7 @@ function About() {
           </H1>
         </TextContainer>
       </Container>
+
       <FindOutMore>
         <animated.div style={{ ...props, fontSize: '2em' }}>
           <FontAwesomeIcon icon="level-down-alt" />
