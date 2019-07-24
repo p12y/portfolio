@@ -13,7 +13,6 @@
     "react-ink": "^6.4.0",
     "react-scripts": "3.0.1",
     "react-spring": "^8.0.20",
-    "react-visibility-sensor": "^5.0.2",
     "react-waypoint": "^9.0.2",
     "smoothscroll-polyfill": "^0.4.4",
     "styled-components": "^4.2.0"
