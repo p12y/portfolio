@@ -97,15 +97,12 @@ const FavoriteContainer = styled.div`
 `;
 
 const Favorite = styled.img`
-  width: 8rem;
-  height: 8rem;
+  width: 100%;
+  max-width: 8rem;
+  max-height: 8rem;
   ${media.tablet`
-    width: 5rem;
-    height: 5rem;
-  `}
-  ${media.phone`
-    width: 5rem;
-    height: 5rem;
+    max-width: 5rem;
+    max-height: 5rem;
   `}
 `;
 
