@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import smoothscroll from 'smoothscroll-polyfill';
 import ThemeProvider from './components/ThemeProvider';
 import App from './components/App';
-import * as serviceWorker from './serviceWorker';
 import './index.css';
 
 // Icons
