@@ -128,7 +128,7 @@ function ToolCard({ title, tools }) {
 }
 
 function Tools() {
-  const languages = ['JavaScript', 'HTML/CSS', 'Ruby'];
+  const languages = ['JavaScript', 'HTML & CSS', 'Ruby'];
   const frameworks = ['React', 'Vue', 'Express', 'Rails'];
   const databases = ['MongoDB', 'PostgreSQL', 'Firebase'];
   const testing = ['Jest', 'Enzyme', 'Mocha', 'Chai'];
