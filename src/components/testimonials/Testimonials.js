@@ -43,7 +43,7 @@ function Testimonials() {
       <TestimonialsContainer>
         {testimonials.map(testimonial => (
           <div style={{ paddingBottom: '3rem' }} key={testimonial.name}>
-            <Avatar />
+            {testimonial.avatar && <Avatar />}
             <TestimonialText>"{testimonial.text}"</TestimonialText>
             <Name>{testimonial.name}</Name>
             <Position>{`${testimonial.position}, ${testimonial.company}`}</Position>
