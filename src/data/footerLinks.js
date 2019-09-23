@@ -14,4 +14,8 @@ export default [
     icon: 'instagram',
     href: 'https://www.instagram.com/petetyldesley/',
   },
+  {
+    icon: 'linkedin',
+    href: 'https://www.linkedin.com/in/peter-tyldesley-2984a111b/',
+  },
 ];

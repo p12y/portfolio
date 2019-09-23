@@ -22,6 +22,7 @@ import {
   faGithub,
   faGitlab,
   faInstagram,
+  faLinkedin,
 } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
@@ -35,7 +36,8 @@ library.add(
   faGithub,
   faGitlab,
   faInstagram,
-  faExternalLinkAlt
+  faExternalLinkAlt,
+  faLinkedin
 );
 
 // Add polyfill for Element.scrollIntoView() smooth scroll
