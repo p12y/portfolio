@@ -31,7 +31,8 @@ export default [
     projectInfo:
       'Polling application built with React and Firebase with realtime functionality. Designed to help friends & family pick a day to meet up that works for everyone.',
     background: 'linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5)',
-    url: 'https://meetup-scheduler-development.firebaseapp.com/',
+    appUrl: 'https://meetup-scheduler-development.firebaseapp.com/',
+    githubUrl: 'https://github.com/p12y/meetup-scheduler',
     images: generateImages('meetup-scheduler'),
     tags: ['React', 'Firebase', 'Cloud Functions'],
   },
@@ -39,7 +40,8 @@ export default [
     projectTitle: 'Shrnk',
     projectInfo:
       'A URL shortening application and API that takes a long URL and returns an encoded URL, which will redirect back to the original. Built with Vue, Express and MongoDB.',
-    url: 'https://shrnk-url.appspot.com/',
+    appUrl: 'https://shrnk-url.appspot.com/',
+    githubUrl: 'https://github.com/p12y/shrnk',
     background: 'linear-gradient(to right, #0083B0, #00B4DB)',
     images: generateImages('shrnk'),
 

@@ -4,7 +4,7 @@ import ImageGallery from 'react-image-gallery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSpring, animated, config } from 'react-spring';
 import media from 'styles/media';
-import "react-image-gallery/styles/css/image-gallery.css";
+import 'react-image-gallery/styles/css/image-gallery.css';
 import './imageGalleryOverrides.css';
 import Tag from 'components/styled/Tag';
 
@@ -18,7 +18,7 @@ const Overlay = styled(animated.div)`
 `;
 
 const OverlayBackground = styled.div`
-  background: #2BC0E4; /* fallback for old browsers */
+  background: #2bc0e4; /* fallback for old browsers */
   background: ${props => props.background};
   height: 100%;
   left: 0;
@@ -28,10 +28,10 @@ const OverlayBackground = styled.div`
   width: 100%;
   &::before {
     background-color: ${props => props.theme.background};
-    content: "";
+    content: '';
     display: block;
     height: 100%;
-    opacity: ${props => props.theme.mode === 'dark' ? 0.7 : 0};
+    opacity: ${props => (props.theme.mode === 'dark' ? 0.7 : 0)};
     position: absolute;
     width: 100%;
   }
@@ -39,7 +39,7 @@ const OverlayBackground = styled.div`
 
 const Container = styled.div`
   display: grid;
-  grid-template-areas: "images info";
+  grid-template-areas: 'images info';
   grid-template-columns: 50% 50%;
   height: 100%;
   position: relative;
@@ -86,6 +86,22 @@ const Title = styled.h2`
 
 const Info = styled.p`
   font-family: ${({ theme }) => theme.fonts.body};
+`;
+
+const UrlSection = styled.p`
+  font-family: ${({ theme }) => theme.fonts.body};
+`;
+
+const Link = styled.a`
+  color: white;
+  text-decoration: none;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+  font-size: 1.6em;
+  transition: color 0.2s ease-in-out;
+  &:hover {
+    color: var(--dark-bg-color);
+  }
 `;
 
 const ExitButton = styled(animated.div)`
@@ -136,12 +152,8 @@ function WorkModal(props) {
   });
 
   return (
-    <Overlay
-      style={openSpringProps}
-    >
-      <OverlayBackground
-        background={props.project.background}
-      />
+    <Overlay style={openSpringProps}>
+      <OverlayBackground background={props.project.background} />
       <ExitButton onClick={props.toggleModalOpen} style={exitSpringProps}>
         <FontAwesomeIcon icon="times" />
       </ExitButton>
@@ -150,6 +162,18 @@ function WorkModal(props) {
           <TextContainer style={textSpringProps}>
             <Title>{props.project.projectTitle}</Title>
             <Info>{props.project.projectInfo}</Info>
+            {props.project.appUrl && props.project.githubUrl && (
+              <div>
+                <UrlSection>
+                  <Link href={props.project.githubUrl} target="_blank">
+                    <FontAwesomeIcon icon={['fab', 'github']} />
+                  </Link>
+                  <Link href={props.project.appUrl} target="_blank">
+                    <FontAwesomeIcon icon="external-link-alt" />
+                  </Link>
+                </UrlSection>
+              </div>
+            )}
           </TextContainer>
         </InfoContainer>
         <ImagesContainer style={imageSpringProps}>

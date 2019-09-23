@@ -15,6 +15,7 @@ import {
   faMoon,
   faLevelDownAlt,
   faTimes,
+  faExternalLinkAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -34,6 +35,7 @@ library.add(
   faGithub,
   faGitlab,
   faInstagram,
+  faExternalLinkAlt
 );
 
 // Add polyfill for Element.scrollIntoView() smooth scroll
@@ -42,5 +44,6 @@ smoothscroll.polyfill();
 ReactDOM.render(
   <ThemeProvider>
     <App />
-  </ThemeProvider>
-  , document.getElementById('root'));
+  </ThemeProvider>,
+  document.getElementById('root')
+);
