@@ -34,7 +34,7 @@ export default [
     appUrl: 'https://meetup-scheduler-development.firebaseapp.com/',
     githubUrl: 'https://github.com/p12y/meetup-scheduler',
     images: generateImages('meetup-scheduler'),
-    tags: ['React', 'Firebase', 'Cloud Functions'],
+    tags: ['React', 'Firebase', 'Cloud Functions', 'Styled Components'],
   },
   {
     projectTitle: 'Shrnk',
