@@ -37,26 +37,12 @@ const ButtonContainer = styled.div`
   `}
 `;
 
-function LightButton({ onClick }) {
-  return (
-    <Wrapper onClick={onClick} background="var(--light-bg-color)">
-      <FontAwesomeIcon icon="sun" />
-    </Wrapper>
-  );
-}
-
-function DarkButton({ onClick }) {
-  return (
-    <Wrapper onClick={onClick} background="var(--dark-bg-color)">
-      <FontAwesomeIcon color="white" icon="moon" />
-    </Wrapper>
-  );
-}
-
 function ThemeButton() {
   const lastScrollTop = useRef(0);
   const [visibility, setVisibility] = useState(false);
   const theme = useContext(ThemeContext);
+  const isLightTheme = theme.mode === 'light';
+  const invertedTheme = () => (isLightTheme ? 'dark' : 'light');
 
   const scrollListener = () => {
     const position = window.pageYOffset || document.documentElement.scrollTop;
@@ -79,33 +65,24 @@ function ThemeButton() {
     marginTop: visibility ? '-97%' : '0%',
   });
 
-  const renderButton = () => {
-    return theme.mode === 'light' ? (
-      <DarkButton
-        onClick={() => {
-          setVisibility(false);
-          theme.setMode('dark');
-          localStorage.setItem('mode', 'dark');
-        }}
-      />
-    ) : (
-      <LightButton
-        onClick={() => {
-          setVisibility(false);
-          theme.setMode('light');
-          localStorage.setItem('mode', 'light');
-        }}
-      />
-    );
-  };
-
   return (
     <ButtonContainer>
       <animated.div
         onMouseEnter={() => setVisibility(false)}
         style={{ ...props, height: '100%' }}
       >
-        {renderButton()}
+        <Wrapper
+          onClick={() => {
+            theme.setMode(invertedTheme());
+            localStorage.setItem('mode', invertedTheme());
+          }}
+          background={`var(--${invertedTheme()}-bg-color)`}
+        >
+          <FontAwesomeIcon
+            color={`var(--${isLightTheme ? 'light' : 'dark'}-bg-color)`}
+            icon={isLightTheme ? 'moon' : 'sun'}
+          />
+        </Wrapper>
       </animated.div>
     </ButtonContainer>
   );
