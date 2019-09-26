@@ -1,7 +1,7 @@
 :root {
   --dark-bg-color: #2e2d2f;
   --light-bg-color: #fff;
-  --primary: #F62B54;
+  --primary: #f62b54;
   --secondary: #00bee0;
 }
 
@@ -15,4 +15,8 @@ body {
   margin: 0;
   padding: 0;
   transition: background-color 0.5s ease;
+}
+
+#root {
+  height: 100%;
 }

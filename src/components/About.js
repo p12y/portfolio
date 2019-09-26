@@ -9,7 +9,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 100px);
+  height: calc(100% - 100px);
 `;
 
 const TextContainer = styled.div`
@@ -37,7 +37,7 @@ const FindOutMore = styled.div`
 const Background = styled.div`
   position: absolute;
   z-index: -1;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   top: 0;
   left: 0;

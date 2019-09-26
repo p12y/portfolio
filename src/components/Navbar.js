@@ -7,7 +7,7 @@ import media from 'styles/media';
 const Wrapper = styled.div`
   position: fixed;
   box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.15);
-  height: 100vh;
+  height: 100%;
   width: 4rem;
   top: 0;
   left: 0;
