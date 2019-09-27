@@ -23,7 +23,7 @@ const DialogBackground = styled.div`
 const DialogContainer = styled.div`
   background: ${({ theme }) => theme.dialog.background};
   border-radius: 4px;
-  max-width: 25rem;
+  max-width: 30rem;
   padding: 1rem;
 `;
 
