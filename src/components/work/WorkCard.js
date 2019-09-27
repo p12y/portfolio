@@ -4,7 +4,7 @@ import WorkModal from './WorkModal';
 
 const Card = styled.div`
   align-items: center;
-  background: #2BC0E4; /* fallback for old browsers */
+  background: #2bc0e4; /* fallback for old browsers */
   background: ${props => props.background};
   border-radius: ${({ theme }) => theme.borderRadius};
   cursor: pointer;
@@ -21,11 +21,13 @@ const Title = styled.h2`
   font-family: ${({ theme }) => theme.fonts.title};
 `;
 
-const WorkCard = (props) => {
+const WorkCard = props => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const toggleModalOpen = () => {
-    document.querySelector('body').style.overflow = !modalOpen ? 'hidden' : 'initial';
+    document.querySelector('body').style.overflow = !modalOpen
+      ? 'hidden'
+      : 'initial';
     setModalOpen(!modalOpen);
   };
 
@@ -33,17 +35,15 @@ const WorkCard = (props) => {
     <>
       <WorkModal
         toggleModalOpen={toggleModalOpen}
-        modalOpen={modalOpen}
+        onClose={toggleModalOpen}
+        open={modalOpen}
         project={props.project}
       />
-      <Card
-        onClick={toggleModalOpen}
-        background={props.project.background}
-      >
+      <Card onClick={toggleModalOpen} background={props.project.background}>
         <Title>{props.project.projectTitle}</Title>
       </Card>
     </>
   );
-}
+};
 
 export default WorkCard;

@@ -3,16 +3,20 @@ import styled from 'styled-components';
 import ImageGallery from 'react-image-gallery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSpring, animated, config } from 'react-spring';
+import { Transition } from 'react-spring/renderprops';
 import media from 'styles/media';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import './imageGalleryOverrides.css';
 import Tag from 'components/styled/Tag';
+import useCloseDialog from 'hooks/useCloseDialog';
 
 const Overlay = styled(animated.div)`
   height: 100%;
   left: 0;
   position: fixed;
   top: 0;
+  touch-action: none;
+  webkit-tap-highlight-color: transparent;
   width: 100%;
   z-index: 1;
 `;
@@ -25,6 +29,8 @@ const OverlayBackground = styled.div`
   opacity: 0.95;
   position: fixed;
   top: 0;
+  touch-action: none;
+  webkit-tap-highlight-color: transparent;
   width: 100%;
   &::before {
     background-color: ${props => props.theme.background};
@@ -119,18 +125,14 @@ const Tags = styled.p`
   text-align: center;
 `;
 
-function WorkModal(props) {
-  const openSpringProps = useSpring({
-    immediate: props.modalOpen ? false : true,
-    visibility: props.modalOpen ? 'visible' : 'hidden',
-    opacity: props.modalOpen ? 1 : 0,
-  });
+function WorkModal({ toggleModalOpen, open, project }) {
+  useCloseDialog({ open, onClose: toggleModalOpen });
 
   const sharedSpringProps = {
-    immediate: props.modalOpen ? false : true,
-    opacity: props.modalOpen ? 1 : 0,
-    transform: props.modalOpen ? 'scale(1)' : 'scale(0.5)',
-    scale: props.modalOpen ? 1 : 0,
+    immediate: open ? false : true,
+    opacity: open ? 1 : 0,
+    transform: open ? 'scale(1)' : 'scale(0.5)',
+    scale: open ? 1 : 0,
     config: config.gentle,
   };
 
@@ -147,53 +149,66 @@ function WorkModal(props) {
 
   const exitSpringProps = useSpring({
     ...sharedSpringProps,
-    transform: props.modalOpen ? 'scale(1)' : 'scale(0)',
+    transform: open ? 'scale(1)' : 'scale(0)',
     config: config.gentle,
   });
 
   return (
-    <Overlay style={openSpringProps}>
-      <OverlayBackground background={props.project.background} />
-      <ExitButton onClick={props.toggleModalOpen} style={exitSpringProps}>
-        <FontAwesomeIcon icon="times" />
-      </ExitButton>
-      <Container>
-        <InfoContainer>
-          <TextContainer style={textSpringProps}>
-            <Title>{props.project.projectTitle}</Title>
-            <Info>{props.project.projectInfo}</Info>
-            {props.project.appUrl && props.project.githubUrl && (
-              <div>
-                <UrlSection>
-                  <Link href={props.project.githubUrl} target="_blank">
-                    <FontAwesomeIcon icon={['fab', 'github']} />
-                  </Link>
-                  <Link href={props.project.appUrl} target="_blank">
-                    <FontAwesomeIcon icon="external-link-alt" />
-                  </Link>
-                </UrlSection>
-              </div>
-            )}
-          </TextContainer>
-        </InfoContainer>
-        <ImagesContainer style={imageSpringProps}>
-          <div>
-            <ImageGallery
-              items={props.project.images}
-              showBullets={true}
-              showThumbnails={false}
-              showFullscreenButton={false}
-              showPlayButton={false}
-            />
-            <Tags>
-              {props.project.tags.map((tag, index) => (
-                <Tag key={tag}>{tag}</Tag>
-              ))}
-            </Tags>
-          </div>
-        </ImagesContainer>
-      </Container>
-    </Overlay>
+    <Transition
+      config={{ duration: 100 }}
+      items={open}
+      from={{ opacity: 0 }}
+      enter={{ opacity: 1 }}
+      leave={{ opacity: 0 }}
+    >
+      {open =>
+        open &&
+        (props => (
+          <Overlay style={{ ...props }}>
+            <OverlayBackground background={project.background} />
+            <ExitButton onClick={toggleModalOpen} style={exitSpringProps}>
+              <FontAwesomeIcon icon="times" />
+            </ExitButton>
+            <Container>
+              <InfoContainer>
+                <TextContainer style={textSpringProps}>
+                  <Title>{project.projectTitle}</Title>
+                  <Info>{project.projectInfo}</Info>
+                  {project.appUrl && project.githubUrl && (
+                    <div>
+                      <UrlSection>
+                        <Link href={project.githubUrl} target="_blank">
+                          <FontAwesomeIcon icon={['fab', 'github']} />
+                        </Link>
+                        <Link href={project.appUrl} target="_blank">
+                          <FontAwesomeIcon icon="external-link-alt" />
+                        </Link>
+                      </UrlSection>
+                    </div>
+                  )}
+                </TextContainer>
+              </InfoContainer>
+              <ImagesContainer style={imageSpringProps}>
+                <div>
+                  <ImageGallery
+                    items={project.images}
+                    showBullets={true}
+                    showThumbnails={false}
+                    showFullscreenButton={false}
+                    showPlayButton={false}
+                  />
+                  <Tags>
+                    {project.tags.map((tag, index) => (
+                      <Tag key={tag}>{tag}</Tag>
+                    ))}
+                  </Tags>
+                </div>
+              </ImagesContainer>
+            </Container>
+          </Overlay>
+        ))
+      }
+    </Transition>
   );
 }
 

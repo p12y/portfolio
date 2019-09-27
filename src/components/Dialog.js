@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Transition } from 'react-spring/renderprops';
+import useCloseDialog from 'hooks/useCloseDialog';
 
 const DialogBackground = styled.div`
   align-items: center;
@@ -31,19 +32,7 @@ const DialogTitle = styled.div`
 `;
 
 function Dialog({ open, title, content, onClose }) {
-  useEffect(() => {
-    const keyupListener = e => {
-      if (e.key === 'Escape') onClose();
-    };
-
-    if (open) {
-      document.addEventListener('keyup', keyupListener);
-    } else {
-      document.removeEventListener('keyup', keyupListener);
-    }
-
-    return () => document.removeEventListener('keyup', keyupListener);
-  }, [open, onClose]);
+  useCloseDialog({ open, onClose });
 
   return (
     <Transition
