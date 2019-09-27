@@ -14,6 +14,9 @@ const themes = {
       background: '#ddd',
       icon: 'var(--dark-bg-color)',
     },
+    dialog: {
+      background: 'var(--light-bg-color)',
+    },
   },
   dark: {
     background: 'var(--dark-bg-color)',
@@ -23,7 +26,10 @@ const themes = {
       background: '#4c4c4c',
       icon: '#fff',
     },
-  }
+    dialog: {
+      background: '#4c4c4c',
+    },
+  },
 };
 
 /**
@@ -38,7 +44,7 @@ const shared = {
   colors: {
     primary: 'var(--primary)',
     secondary: 'var(--secondary)',
-  }
+  },
 };
 
 export default ({ children }) => {
@@ -49,11 +55,13 @@ export default ({ children }) => {
   }, [mode]);
 
   return (
-    <ThemeContext.Provider value={{
-      setMode,
-      mode,
-      theme: themes[mode],
-    }}>
+    <ThemeContext.Provider
+      value={{
+        setMode,
+        mode,
+        theme: themes[mode],
+      }}
+    >
       <ThemeProvider theme={{ mode, ...shared, ...themes[mode] }}>
         {children}
       </ThemeProvider>

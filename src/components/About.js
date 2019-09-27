@@ -4,20 +4,22 @@ import { Waypoint } from 'react-waypoint';
 import { useSpring, animated } from 'react-spring';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import media from 'styles/media';
+import NameNudge from './NudgeText';
+import NameModal from './NameModal';
 
 const Container = styled.div`
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   height: calc(100% - 100px);
+  justify-content: center;
 `;
 
 const TextContainer = styled.div`
-  text-align: center;
-  font-family: 'Space Mono', monospace;
   color: ${props => props.theme.titleColor};
+  font-family: 'Space Mono', monospace;
   margin-top: -5%;
   margin: 0 1.5em 0 1.5em;
+  text-align: center;
 `;
 
 const ColorSpan = styled.span`
@@ -25,31 +27,31 @@ const ColorSpan = styled.span`
 `;
 
 const FindOutMore = styled.div`
-  font-family: 'Open Sans', sans-serif;
-  color: ${props => props.theme.titleColor};
-  height: 100px;
-  display: flex;
   align-items: center;
+  color: ${props => props.theme.titleColor};
+  display: flex;
+  font-family: 'Open Sans', sans-serif;
+  height: 100px;
   justify-content: center;
   text-align: center;
 `;
 
 const Background = styled.div`
-  position: absolute;
-  z-index: -1;
   height: 100%;
-  width: 100vw;
-  top: 0;
   left: 0;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: -1;
 `;
 
 const Stripe = styled.div``;
 
 const Stripes = styled.div`
-  position: relative;
   display: grid;
   grid: repeat(5, 200px) / repeat(10, 1fr);
   opacity: 0.15;
+  position: relative;
   ${Stripe}:nth-child(1) {
     grid-column: span 3;
     background: linear-gradient(to right, #ffedbc, #ed4264);
@@ -83,7 +85,9 @@ const H1 = styled.h1`
 
 function About() {
   const [arrowVisible, setArrowVisible] = useState(true);
-  const props = useSpring({ opacity: arrowVisible ? 1 : 0 });
+  const [nudgeNeeded, setNudgeNeeded] = useState(true);
+  const arrowProps = useSpring({ opacity: arrowVisible ? 1 : 0 });
+  const [nameModalOpen, setNameModalOpen] = useState(false);
 
   return (
     <>
@@ -95,7 +99,14 @@ function About() {
           <Stripe />
         </Stripes>
       </Background>
-
+      {nudgeNeeded && (
+        <NameNudge
+          onClick={() => {
+            setNudgeNeeded(false);
+            setNameModalOpen(true);
+          }}
+        />
+      )}
       <Container id="about">
         <TextContainer>
           <Waypoint
@@ -112,10 +123,12 @@ function About() {
       </Container>
 
       <FindOutMore>
-        <animated.div style={{ ...props, fontSize: '2em' }}>
+        <animated.div style={{ ...arrowProps, fontSize: '2em' }}>
           <FontAwesomeIcon icon="level-down-alt" />
         </animated.div>
       </FindOutMore>
+
+      <NameModal open={nameModalOpen} onClose={() => setNameModalOpen(false)} />
     </>
   );
 }

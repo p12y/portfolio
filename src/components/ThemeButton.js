@@ -6,34 +6,34 @@ import ThemeContext from 'context/ThemeContext';
 import media from 'styles/media';
 
 const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  background: ${props => props.background};
-  color: #333;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  box-shadow: 3px 4px 5px -2px rgba(0, 0, 0, 0.33);
+  background: ${props => props.background};
   border-radius: 4px 20% 4px 20%;
+  box-shadow: 3px 4px 5px -2px rgba(0, 0, 0, 0.33);
+  color: #333;
   cursor: pointer;
+  display: flex;
+  font-size: 2rem;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
   ${media.phone`
     font-size: 1.8rem;
   `}
 `;
 
 const ButtonContainer = styled.div`
+  height: 4rem;
+  margin-right: 2rem;
+  margin-top: 0.5rem;
+  position: fixed;
   right: 0;
   top: 0;
-  margin-top: 0.5rem;
-  margin-right: 2rem;
-  position: fixed;
   width: 4rem;
-  height: 4rem;
   ${media.phone`
+    height: 3rem;
     margin-right: 0.5rem;
     width: 3rem;
-    height: 3rem;
   `}
 `;
 
