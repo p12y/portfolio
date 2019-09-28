@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import ImageGallery from 'react-image-gallery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,6 +9,7 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 import './imageGalleryOverrides.css';
 import Tag from 'components/styled/Tag';
 import useCloseDialog from 'hooks/useCloseDialog';
+import LoadingSpinner from './LoadingSpinner';
 
 const Overlay = styled(animated.div)`
   height: 100%;
@@ -126,7 +127,12 @@ const Tags = styled.p`
 `;
 
 function WorkModal({ toggleModalOpen, open, project }) {
+  const [imagesLoaded, setImagesLoaded] = useState(false);
   useCloseDialog({ open, onClose: toggleModalOpen });
+
+  useEffect(() => {
+    setImagesLoaded(false);
+  }, [project, open]);
 
   const sharedSpringProps = {
     immediate: open ? false : true,
@@ -152,6 +158,19 @@ function WorkModal({ toggleModalOpen, open, project }) {
     transform: open ? 'scale(1)' : 'scale(0)',
     config: config.gentle,
   });
+
+  const onImageLoad = useCallback(
+    (() => {
+      let count = 0;
+      return () => {
+        count += 1;
+        if (count === project.images.length) {
+          setImagesLoaded(true);
+        }
+      };
+    })(),
+    [project, open]
+  );
 
   return (
     <Transition
@@ -189,8 +208,14 @@ function WorkModal({ toggleModalOpen, open, project }) {
                 </TextContainer>
               </InfoContainer>
               <ImagesContainer style={imageSpringProps}>
-                <div>
+                <LoadingSpinner loaded={imagesLoaded} />
+                <div
+                  style={{
+                    display: imagesLoaded ? 'block' : 'none',
+                  }}
+                >
                   <ImageGallery
+                    onImageLoad={onImageLoad}
                     items={project.images}
                     showBullets={true}
                     showThumbnails={false}
