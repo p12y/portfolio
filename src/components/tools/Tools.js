@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { Waypoint } from 'react-waypoint';
 import { useTrail, animated } from 'react-spring';
 import media from 'styles/media';
-import Title from './Title';
-import Container from './styled/Container';
+import Title from '../Title';
+import Container from '../styled/Container';
 import logo1 from 'images/logos/firebase.png';
 import logo2 from 'images/logos/gcp.png';
 import logo3 from 'images/logos/git.png';
@@ -13,6 +13,7 @@ import logo5 from 'images/logos/material-ui.png';
 import logo6 from 'images/logos/node.png';
 import logo7 from 'images/logos/react.png';
 import logo8 from 'images/logos/ts.png';
+import ToolCard from './ToolCard';
 
 const favTools = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8];
 
@@ -33,41 +34,6 @@ const Section = styled.div`
   `}
   align-items: center;
   justify-content: center;
-`;
-
-const ToolContainer = styled.div`
-  background: white;
-  width: 85%;
-  height: auto;
-  border-radius: 4px;
-  margin: auto;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  align-self: start;
-  box-shadow: 3px 4px 5px -2px rgba(0, 0, 0, 0.33);
-  text-align: center;
-  padding-bottom: 0.5rem;
-  padding-top: 1px;
-`;
-
-const ToolHeader = styled.h3`
-  color: #333;
-  font-family: 'Space Mono', monospace;
-`;
-
-const Hr = styled.hr`
-  border-top: 1px dashed #8c8b8b;
-`;
-
-const Ul = styled.ul`
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-`;
-
-const Li = styled.li`
-  padding: 0.5rem;
-  font-family: 'Open Sans', sans-serif;
 `;
 
 const FavoritesSection = styled.div`
@@ -105,27 +71,6 @@ const Favorite = styled.img`
     max-height: 5rem;
   `}
 `;
-
-function ToolCard({ title, tools }) {
-  return (
-    <ToolContainer>
-      <Ul>
-        <li>
-          <ToolHeader>{title}</ToolHeader>
-        </li>
-        <Hr />
-        {tools.map((tool, index) => {
-          return (
-            <div key={tool}>
-              <Li>{tool}</Li>
-              {index === tools.length - 1 ? '' : <Hr />}
-            </div>
-          );
-        })}
-      </Ul>
-    </ToolContainer>
-  );
-}
 
 function Tools() {
   const languages = ['JavaScript', 'HTML & CSS', 'Ruby'];

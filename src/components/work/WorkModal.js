@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ImageGallery from 'react-image-gallery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -236,5 +237,11 @@ function WorkModal({ toggleModalOpen, open, project }) {
     </Transition>
   );
 }
+
+WorkModal.propTypes = {
+  toggleModalOpen: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
+  project: PropTypes.object.isRequired,
+};
 
 export default WorkModal;

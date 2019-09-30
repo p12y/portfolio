@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Transition } from 'react-spring/renderprops';
 import useCloseDialog from 'hooks/useCloseDialog';
@@ -56,5 +57,13 @@ function Dialog({ open, title, content, onClose }) {
     </Transition>
   );
 }
+
+Dialog.propTypes = {
+  open: PropTypes.bool.isRequired,
+  title: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
+  content: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
+    .isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default Dialog;

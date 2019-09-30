@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 import Dialog from './Dialog';
 
@@ -89,5 +90,10 @@ const NameModal = ({ open, onClose }) => (
     }
   />
 );
+
+NameModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default NameModal;

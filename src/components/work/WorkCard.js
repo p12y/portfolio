@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import WorkModal from './WorkModal';
 
@@ -21,7 +22,7 @@ const Title = styled.h2`
   font-family: ${({ theme }) => theme.fonts.title};
 `;
 
-const WorkCard = props => {
+const WorkCard = ({ project }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const toggleModalOpen = () => {
@@ -37,13 +38,17 @@ const WorkCard = props => {
         toggleModalOpen={toggleModalOpen}
         onClose={toggleModalOpen}
         open={modalOpen}
-        project={props.project}
+        project={project}
       />
-      <Card onClick={toggleModalOpen} background={props.project.background}>
-        <Title>{props.project.projectTitle}</Title>
+      <Card onClick={toggleModalOpen} background={project.background}>
+        <Title>{project.projectTitle}</Title>
       </Card>
     </>
   );
+};
+
+WorkCard.propTypes = {
+  project: PropTypes.object.isRequired,
 };
 
 export default WorkCard;

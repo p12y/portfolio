@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 import { useSpring, animated, config } from 'react-spring';
 import { Waypoint } from 'react-waypoint';
@@ -30,15 +31,19 @@ function Title({ text, theme }) {
 
   const [toggle, setToggle] = useState(false);
   const props = useSpring({
-    to: async (next) => {
+    to: async next => {
       await next({ opacity: toggle ? 1 : 0, config: config.gentle });
       await next({ width: toggle ? '100%' : '0%', config: config.default });
     },
-    from: { opacity: 0, width: '0%' }
+    from: { opacity: 0, width: '0%' },
   });
 
   return (
-    <Waypoint topOffset="50px" bottomOffset="50px" onEnter={() => setToggle(true)}>
+    <Waypoint
+      topOffset="50px"
+      bottomOffset="50px"
+      onEnter={() => setToggle(true)}
+    >
       <Container>
         <animated.div style={{ ...props, ...underlineStyle }}>
           <H1>{text}</H1>
@@ -47,5 +52,10 @@ function Title({ text, theme }) {
     </Waypoint>
   );
 }
+
+Title.propTypes = {
+  text: PropTypes.string.isRequired,
+  theme: PropTypes.object.isRequired,
+};
 
 export default withTheme(Title);

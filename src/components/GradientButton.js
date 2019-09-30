@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -60,5 +61,13 @@ function GradientButton({ href, text, inverted, icon, target }) {
     </ButtonOuter>
   );
 }
+
+GradientButton.propTypes = {
+  href: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  inverted: PropTypes.bool,
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  target: PropTypes.string,
+};
 
 export default GradientButton;

@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Ink from 'react-ink';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import media from 'styles/media';
+import NavigationButtonBase from 'components/styled/NavigationButtonBase';
+import NavButton from './NavButton';
 
 const Wrapper = styled.div`
   position: fixed;
@@ -15,15 +16,7 @@ const Wrapper = styled.div`
   ${media.phone`display: none;`}
 `;
 
-const Button = styled.div`
-  width: 100%;
-  height: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const HomeButton = styled(Button)`
+const HomeButton = styled(NavigationButtonBase)`
   color: white;
   cursor: pointer;
   font-weight: bold;
@@ -31,40 +24,6 @@ const HomeButton = styled(Button)`
   background: ${({ theme }) => theme.colors.primary};
   position: relative;
 `;
-
-const IconButton = styled(Button)`
-  font-size: 1.5rem;
-  background: ${props => props.theme.nav.background};
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  color: ${props => props.theme.nav.icon};
-`;
-
-const HoverCircle = styled.div`
-  cursor: pointer;
-  position: relative;
-  transition: background-color 0.1s ease;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3.5rem;
-  height: 3.5rem;
-  &:hover {
-    background: ${props => props.theme.nav.hoverCircle};
-  }
-`;
-
-function NavButton({ icon, onClick }) {
-  return (
-    <IconButton onClick={onClick}>
-      <HoverCircle>
-        <Ink />
-        <FontAwesomeIcon icon={icon} />
-      </HoverCircle>
-    </IconButton>
-  );
-}
 
 function Navbar() {
   const handleClick = id => () => {

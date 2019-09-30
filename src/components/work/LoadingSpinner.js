@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 
 const Container = styled.div`
@@ -56,5 +57,9 @@ function LoadingSpinner({ loaded }) {
     </div>
   );
 }
+
+LoadingSpinner.propTypes = {
+  loaded: PropTypes.bool.isRequired,
+};
 
 export default LoadingSpinner;

@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useSpring, animated } from 'react-spring';
 import styled from 'styled-components';
 import ThemeContext from 'context/ThemeContext';
@@ -87,5 +88,9 @@ function NudgeText({ onClick }) {
     </Container>
   );
 }
+
+NudgeText.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default NudgeText;
