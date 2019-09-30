@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import ImageGallery from 'react-image-gallery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSpring, animated, config } from 'react-spring';
-import { Transition } from 'react-spring/renderprops';
+import { Transition } from 'react-spring/renderprops.cjs';
 import media from 'styles/media';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import './imageGalleryOverrides.css';

@@ -1,11 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import smoothscroll from 'smoothscroll-polyfill';
-import CustomThemeProvider from './components/CustomThemeProvider';
-import App from './components/App';
-import './index.css';
-
-// Icons
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faLaptopCode,
@@ -40,12 +34,4 @@ library.add(
   faLinkedin
 );
 
-// Add polyfill for Element.scrollIntoView() smooth scroll
-smoothscroll.polyfill();
-
-ReactDOM.render(
-  <CustomThemeProvider>
-    <App />
-  </CustomThemeProvider>,
-  document.getElementById('root')
-);
+configure({ adapter: new Adapter() });

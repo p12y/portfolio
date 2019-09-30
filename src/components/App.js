@@ -10,13 +10,13 @@ import Testimonials from 'components/testimonials/Testimonials';
 import CallToAction from './CallToAction';
 import Footer from './Footer';
 
-function App() {
-  const Main = styled.div`
-    padding-left: 4rem;
-    ${media.phone`padding-left: 0`}
-    height: 100%;
-  `;
+const Main = styled.div`
+  padding-left: 4rem;
+  ${media.phone`padding-left: 0`}
+  height: 100%;
+`;
 
+function App() {
   return (
     <>
       <Navbar />

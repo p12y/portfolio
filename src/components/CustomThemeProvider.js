@@ -47,7 +47,7 @@ const shared = {
   },
 };
 
-export default ({ children }) => {
+function CustomThemeProvider({ children }) {
   const [mode, setMode] = useState(localStorage.getItem('mode') || 'light');
 
   useEffect(() => {
@@ -67,4 +67,6 @@ export default ({ children }) => {
       </ThemeProvider>
     </ThemeContext.Provider>
   );
-};
+}
+
+export default CustomThemeProvider;
