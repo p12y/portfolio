@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Waypoint } from 'react-waypoint';
-import { useSpring, animated } from 'react-spring';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import media from 'styles/media';
-import NudgeText from './NudgeText';
-import NameModal from './NameModal';
+import NudgeText from '../NudgeText';
+import NameModal from '../NameModal';
+import DownArrow from './DownArrow';
 
 const Container = styled.div`
   align-items: center;
@@ -24,16 +23,6 @@ const TextContainer = styled.div`
 
 const ColorSpan = styled.span`
   color: ${({ theme }) => theme.colors.primary};
-`;
-
-const FindOutMore = styled.div`
-  align-items: center;
-  color: ${props => props.theme.titleColor};
-  display: flex;
-  font-family: 'Open Sans', sans-serif;
-  height: 100px;
-  justify-content: center;
-  text-align: center;
 `;
 
 const Background = styled.div`
@@ -86,7 +75,6 @@ const H1 = styled.h1`
 function About() {
   const [arrowVisible, setArrowVisible] = useState(true);
   const [nudgeNeeded, setNudgeNeeded] = useState(true);
-  const arrowProps = useSpring({ opacity: arrowVisible ? 1 : 0 });
   const [nameModalOpen, setNameModalOpen] = useState(false);
 
   return (
@@ -121,16 +109,7 @@ function About() {
           </H1>
         </TextContainer>
       </Container>
-
-      <FindOutMore>
-        <animated.div
-          data-testid="down-arrow"
-          style={{ ...arrowProps, fontSize: '2em' }}
-        >
-          <FontAwesomeIcon icon="level-down-alt" />
-        </animated.div>
-      </FindOutMore>
-
+      <DownArrow visible={arrowVisible} />
       <NameModal open={nameModalOpen} onClose={() => setNameModalOpen(false)} />
     </>
   );

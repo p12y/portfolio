@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { mount, shallow } from 'enzyme';
-import About from '../About';
+import { act } from 'react-dom/test-utils';
+import { mount } from 'enzyme';
+import { Waypoint } from 'react-waypoint';
+import About from '../about/About';
 import { withTheme } from 'setupTests';
 import NudgeText from 'components/NudgeText';
 import NameModal from 'components/NameModal';
+import DownArrow from 'components/about/DownArrow';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
@@ -33,5 +36,24 @@ describe('nudge text', () => {
     expect(wrap.find(NudgeText)).toHaveLength(1);
     wrap.find(NudgeText).simulate('click');
     expect(wrap.find(NudgeText)).toHaveLength(0);
+  });
+});
+
+describe('down arrow', () => {
+  it('displays down arrow before scolling', () => {
+    const wrap = mount(withTheme(<About />));
+    expect(wrap.find(DownArrow).prop('visible')).toEqual(true);
+  });
+
+  it('hides down arrow after scolling down', () => {
+    const wrap = mount(withTheme(<About />));
+    act(() => {
+      wrap
+        .find(Waypoint)
+        .prop('onPositionChange')
+        .call(null, { currentPosition: 'outside' });
+    });
+    wrap.update();
+    expect(wrap.find(DownArrow).prop('visible')).toEqual(false);
   });
 });
