@@ -4,7 +4,7 @@ import { Waypoint } from 'react-waypoint';
 import { useSpring, animated } from 'react-spring';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import media from 'styles/media';
-import NameNudge from './NudgeText';
+import NudgeText from './NudgeText';
 import NameModal from './NameModal';
 
 const Container = styled.div`
@@ -100,7 +100,7 @@ function About() {
         </Stripes>
       </Background>
       {nudgeNeeded && (
-        <NameNudge
+        <NudgeText
           onClick={() => {
             setNudgeNeeded(false);
             setNameModalOpen(true);
@@ -123,7 +123,10 @@ function About() {
       </Container>
 
       <FindOutMore>
-        <animated.div style={{ ...arrowProps, fontSize: '2em' }}>
+        <animated.div
+          data-testid="down-arrow"
+          style={{ ...arrowProps, fontSize: '2em' }}
+        >
           <FontAwesomeIcon icon="level-down-alt" />
         </animated.div>
       </FindOutMore>

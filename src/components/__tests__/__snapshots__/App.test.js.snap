@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Fragment>
+  <Navbar />
+  <styled.div>
+    <About />
+    <Tools />
+    <Work />
+    <Testimonials />
+    <CallToAction />
+    <Footer />
+  </styled.div>
+  <ThemeButton />
+</Fragment>
+`;
