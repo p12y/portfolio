@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import GradientButton from 'components/GradientButton';
 import media from 'styles/media';
 
-const Title = styled.h1`
+export const Title = styled.h1`
   font-family: ${({ theme }) => theme.fonts.title};
   margin-top: 0;
   ${media.phone`
@@ -11,15 +11,15 @@ const Title = styled.h1`
   `}
 `;
 
-const Background = styled.div`
+export const Background = styled.div`
   background: ${({ theme }) => theme.nav.background};
   height: 10rem;
 `;
 
-const Paper = styled.div`
+export const Paper = styled.div`
   background: ${props => props.theme.titleColor};
   border-radius: 4px;
-  box-shadow: 2px 10px 12px -9px rgba(0,0,0,0.75);
+  box-shadow: 2px 10px 12px -9px rgba(0, 0, 0, 0.75);
   color: ${props => props.theme.background};
   margin: auto;
   margin-top: -15rem;

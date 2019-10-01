@@ -3,6 +3,7 @@ import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { createSerializer } from 'enzyme-to-json';
 import CustomThemeProvider from 'components/CustomThemeProvider';
+import 'jest-styled-components';
 import 'icons';
 
 configure({ adapter: new Adapter() });
