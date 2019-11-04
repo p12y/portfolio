@@ -12,6 +12,10 @@ const Container = styled(animated.span)`
   position: absolute;
   top: 1.6rem;
   width: 6rem;
+  transition: all 0.2s ease;
+  &:hover {
+    transform: scale(1.03) rotateZ(-2deg);
+  }
   ${media.phone`
     display: none;
   `}
