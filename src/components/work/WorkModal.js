@@ -139,7 +139,6 @@ function WorkModal({ toggleModalOpen, open, project }) {
     immediate: open ? false : true,
     opacity: open ? 1 : 0,
     transform: open ? 'scale(1)' : 'scale(0.5)',
-    scale: open ? 1 : 0,
     config: config.gentle,
   };
 
@@ -170,7 +169,7 @@ function WorkModal({ toggleModalOpen, open, project }) {
         }
       };
     })(),
-    [project, open]
+    [project, open],
   );
 
   return (
