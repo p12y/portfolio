@@ -103,7 +103,7 @@ function About() {
             }}
           />
           <H1>
-            I’m <ColorSpan>Peter Tyldesley</ColorSpan>, full-stack developer,
+            I’m <ColorSpan>Peter Tyldesley</ColorSpan>, front-end developer,
             <br />
             full-time tinkerer and creator of things. 👊
           </H1>

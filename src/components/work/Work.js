@@ -42,17 +42,16 @@ function Work() {
     <Container id="work">
       <Title text="Work" />
       <WorkInfo>
-        My journey as a web developer started over 4 years ago. Since then, I've had the opportunity to work on many interesting projects.
-        I've created full-stack applications from the ground up, built APIs and CLIs using Node and worked with a number of front-end JS frameworks, including React, Vue and Angular.
-        I'm always trying to improve efficiency in the workplace and have built Chrome extensions and browser automation tools to improve workflows for myself and the team.
+        My journey as a web developer started 5 years ago. Since then, I've had the opportunity to work on many
+        interesting projects. I've created full-stack applications from the ground up, built APIs and CLIs using Node
+        and worked with a number of front-end JS frameworks, including React, Vue and Angular. I'm always trying to
+        improve efficiency in the workplace and have built Chrome extensions and browser automation tools to improve
+        workflows for myself and the team.
       </WorkInfo>
       <WorkInfo as="h4">Check out some recent projects:</WorkInfo>
       <Grid>
         {workItems.map(project => (
-          <WorkCard
-            key={project.projectTitle}
-            project={project}
-          />
+          <WorkCard key={project.projectTitle} project={project} />
         ))}
       </Grid>
       <ViewMoreContainer>
@@ -60,11 +59,10 @@ function Work() {
           icon={['fab', 'github']}
           text="view more on github"
           href="https://github.com/p12y?tab=repositories"
-        >
-        </GradientButton>
+        ></GradientButton>
       </ViewMoreContainer>
     </Container>
   );
-};
+}
 
 export default Work;
