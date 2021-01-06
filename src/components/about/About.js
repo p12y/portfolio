@@ -18,7 +18,9 @@ const TextContainer = styled.div`
   font-family: 'Space Mono', monospace;
   margin-top: -5%;
   margin: 0 1.5em 0 1.5em;
-  text-align: center;
+  text-align: left;
+  width: 40vw;
+  font-size: 1.5em;
 `;
 
 const ColorSpan = styled.span`
@@ -72,6 +74,12 @@ const H1 = styled.h1`
   ${media.phone`font-size: 1.6em;`}
 `;
 
+const P = styled.p`
+  color: ${({ theme }) => theme.titleColor};
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 1.2rem;
+`;
+
 function About() {
   const [arrowVisible, setArrowVisible] = useState(true);
   const [nudgeNeeded, setNudgeNeeded] = useState(true);
@@ -103,10 +111,9 @@ function About() {
             }}
           />
           <H1>
-            I’m <ColorSpan>Peter Tyldesley</ColorSpan>, front-end developer,
-            <br />
-            full-time tinkerer and creator of things. 👊
+            Hi,<br />I'm <ColorSpan>Pete</ColorSpan>. 👋
           </H1>
+          <P>I create beautiful, interactive user interfaces that are performant and accessible.</P>
         </TextContainer>
       </Container>
       <DownArrow visible={arrowVisible} />

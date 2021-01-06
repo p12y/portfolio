@@ -39,7 +39,7 @@ const Position = styled.h4`
 function Testimonials() {
   return (
     <Container>
-      <Title text="Testimonials" />
+      <Title text="What people say" />
       <TestimonialsContainer>
         {testimonials.map(testimonial => (
           <div style={{ paddingBottom: '3rem' }} key={testimonial.name}>
