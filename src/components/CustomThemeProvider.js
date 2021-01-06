@@ -43,8 +43,7 @@ const shared = {
   },
   colors: {
     primary: 'var(--primary)',
-    secondary: 'var(--secondary)',
-    secondaryLighter: 'var(--secondary-lighter)',
+    secondary: 'var(--secondary)'
   },
 };
 

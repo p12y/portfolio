@@ -48,6 +48,7 @@ function NudgeText({ onClick }) {
       style={{
         ...nudgeProps,
       }}
+      aria-hidden="true"
     >
       <svg
         width="100%"

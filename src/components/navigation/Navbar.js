@@ -37,7 +37,7 @@ const HomeButton = styled(NavigationButtonBase)`
   position: relative;
   transition: all .25s;
   &:focus {
-    box-shadow: 0 0 0 3px var(--secondary-lighter);
+    box-shadow: 0 0 0 3px var(--secondary);
   }
 `;
 
