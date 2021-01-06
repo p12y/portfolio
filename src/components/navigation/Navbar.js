@@ -5,7 +5,7 @@ import media from 'styles/media';
 import NavigationButtonBase from 'components/styled/NavigationButtonBase';
 import NavButton from './NavButton';
 
-const Wrapper = styled.div`
+const Wrapper = styled.nav`
   position: fixed;
   box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.15);
   height: 100%;
@@ -16,6 +16,18 @@ const Wrapper = styled.div`
   ${media.phone`display: none;`}
 `;
 
+const Ul = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+`;
+
+const Li = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const HomeButton = styled(NavigationButtonBase)`
   color: white;
   cursor: pointer;
@@ -23,6 +35,10 @@ const HomeButton = styled(NavigationButtonBase)`
   font-family: 'Space Mono', monospace;
   background: ${({ theme }) => theme.colors.primary};
   position: relative;
+  transition: all .25s;
+  &:focus {
+    box-shadow: 0 0 0 3px var(--secondary-lighter);
+  }
 `;
 
 function Navbar() {
@@ -34,14 +50,21 @@ function Navbar() {
   };
 
   return (
-    <Wrapper>
-      <HomeButton onClick={handleClick('about')}>
-        <Ink />
-        P12y
-      </HomeButton>
-      <NavButton icon="toolbox" onClick={handleClick('tools')} />
-      <NavButton icon="laptop-code" onClick={handleClick('work')} />
-      <NavButton icon="paper-plane" onClick={handleClick('contact')} />
+    <Wrapper role='navigation'>
+      <Ul>
+        <Li>
+          <HomeButton onClick={handleClick('about')} aria-label="Top">
+            <Ink />
+            P12y
+          </HomeButton>
+        </Li>
+        <Li>
+          <NavButton icon="id-card" onClick={handleClick('work')} ariaLabel="About" />
+        </Li>
+        <Li>
+          <NavButton icon="paper-plane" onClick={handleClick('contact')} ariaLabel="Contact" />
+        </Li>
+      </Ul>
     </Wrapper>
   );
 }

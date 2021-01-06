@@ -8,6 +8,7 @@ import {
   faLevelDownAlt,
   faTimes,
   faExternalLinkAlt,
+  faIdCard
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -29,7 +30,8 @@ library.add(
   faGitlab,
   faInstagram,
   faExternalLinkAlt,
-  faLinkedin
+  faLinkedin,
+  faIdCard
 );
 
 export default { library };
