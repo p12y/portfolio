@@ -102,26 +102,46 @@ const UrlSection = styled.p`
 `;
 
 const Link = styled.a`
+  border-radius: 4px;
+  padding: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: white;
   text-decoration: none;
   margin-right: 0.5em;
   margin-left: 0.5em;
   font-size: 1.6em;
-  transition: color 0.2s ease-in-out;
+  outline: none;
+  transition: color 0.25s, box-shadow 0.25s;
   &:hover {
     color: var(--dark-bg-color);
   }
+  &:focus {
+    box-shadow: 0 0 0 3px var(--secondary);
+  }
 `;
 
-const ExitButton = styled(animated.div)`
+const ExitButton = styled(animated.button)`
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
   color: white;
   cursor: pointer;
+  display: flex;
   font-size: 2em
+  justify-content: center;
   margin: 1em;
+  outline: none;
   position: absolute;
   right: 0;
   top: 0;
   z-index: 3;
+  transition: box-shadow 0.25s;
+  &:focus {
+    box-shadow: 0 0 0 3px var(--secondary);
+  }
 `;
 
 const Tags = styled.p`
@@ -186,7 +206,7 @@ function WorkModal({ toggleModalOpen, open, project }) {
           <FocusOn onClickOutside={toggleModalOpen} onEscapeKey={toggleModalOpen} shards={[]}>
             <Overlay style={{ ...props }}>
               <OverlayBackground background={project.background} />
-              <ExitButton onClick={toggleModalOpen} style={exitSpringProps}>
+              <ExitButton onClick={toggleModalOpen} style={exitSpringProps} aria-label="Close dialog">
                 <FontAwesomeIcon icon="times" />
               </ExitButton>
               <Container>
@@ -197,10 +217,10 @@ function WorkModal({ toggleModalOpen, open, project }) {
                     {project.appUrl && project.githubUrl && (
                       <div>
                         <UrlSection>
-                          <Link href={project.githubUrl} target="_blank">
+                          <Link href={project.githubUrl} target="_blank" aria-label="View project on Github">
                             <FontAwesomeIcon icon={['fab', 'github']} />
                           </Link>
-                          <Link href={project.appUrl} target="_blank">
+                          <Link href={project.appUrl} target="_blank" aria-label="View live site">
                             <FontAwesomeIcon icon="external-link-alt" />
                           </Link>
                         </UrlSection>
