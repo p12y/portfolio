@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ImageGallery from 'react-image-gallery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSpring, animated, config } from 'react-spring';
 import { Transition } from 'react-spring/renderprops.cjs';
+import { FocusOn } from 'react-focus-on';
 import media from 'styles/media';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import './imageGalleryOverrides.css';
 import Tag from 'components/styled/Tag';
-import useCloseDialog from 'hooks/useCloseDialog';
 import LoadingSpinner from './LoadingSpinner';
 
 const Overlay = styled(animated.div)`
@@ -129,7 +130,6 @@ const Tags = styled.p`
 
 function WorkModal({ toggleModalOpen, open, project }) {
   const [imagesLoaded, setImagesLoaded] = useState(false);
-  useCloseDialog({ open, onClose: toggleModalOpen });
 
   useEffect(() => {
     setImagesLoaded(false);
@@ -172,7 +172,7 @@ function WorkModal({ toggleModalOpen, open, project }) {
     [project, open],
   );
 
-  return (
+  return ReactDOM.createPortal(
     <Transition
       config={{ duration: 100 }}
       items={open}
@@ -183,57 +183,60 @@ function WorkModal({ toggleModalOpen, open, project }) {
       {open =>
         open &&
         (props => (
-          <Overlay style={{ ...props }}>
-            <OverlayBackground background={project.background} />
-            <ExitButton onClick={toggleModalOpen} style={exitSpringProps}>
-              <FontAwesomeIcon icon="times" />
-            </ExitButton>
-            <Container>
-              <InfoContainer>
-                <TextContainer style={textSpringProps}>
-                  <Title>{project.projectTitle}</Title>
-                  <Info>{project.projectInfo}</Info>
-                  {project.appUrl && project.githubUrl && (
-                    <div>
-                      <UrlSection>
-                        <Link href={project.githubUrl} target="_blank">
-                          <FontAwesomeIcon icon={['fab', 'github']} />
-                        </Link>
-                        <Link href={project.appUrl} target="_blank">
-                          <FontAwesomeIcon icon="external-link-alt" />
-                        </Link>
-                      </UrlSection>
-                    </div>
-                  )}
-                </TextContainer>
-              </InfoContainer>
-              <ImagesContainer style={imageSpringProps}>
-                <LoadingSpinner loaded={imagesLoaded} />
-                <div
-                  style={{
-                    display: imagesLoaded ? 'block' : 'none',
-                  }}
-                >
-                  <ImageGallery
-                    onImageLoad={onImageLoad}
-                    items={project.images}
-                    showBullets={true}
-                    showThumbnails={false}
-                    showFullscreenButton={false}
-                    showPlayButton={false}
-                  />
-                  <Tags>
-                    {project.tags.map((tag, index) => (
-                      <Tag key={tag}>{tag}</Tag>
-                    ))}
-                  </Tags>
-                </div>
-              </ImagesContainer>
-            </Container>
-          </Overlay>
+          <FocusOn onClickOutside={toggleModalOpen} onEscapeKey={toggleModalOpen} shards={[]}>
+            <Overlay style={{ ...props }}>
+              <OverlayBackground background={project.background} />
+              <ExitButton onClick={toggleModalOpen} style={exitSpringProps}>
+                <FontAwesomeIcon icon="times" />
+              </ExitButton>
+              <Container>
+                <InfoContainer>
+                  <TextContainer style={textSpringProps}>
+                    <Title>{project.projectTitle}</Title>
+                    <Info>{project.projectInfo}</Info>
+                    {project.appUrl && project.githubUrl && (
+                      <div>
+                        <UrlSection>
+                          <Link href={project.githubUrl} target="_blank">
+                            <FontAwesomeIcon icon={['fab', 'github']} />
+                          </Link>
+                          <Link href={project.appUrl} target="_blank">
+                            <FontAwesomeIcon icon="external-link-alt" />
+                          </Link>
+                        </UrlSection>
+                      </div>
+                    )}
+                  </TextContainer>
+                </InfoContainer>
+                <ImagesContainer style={imageSpringProps}>
+                  <LoadingSpinner loaded={imagesLoaded} />
+                  <div
+                    style={{
+                      display: imagesLoaded ? 'block' : 'none',
+                    }}
+                  >
+                    <ImageGallery
+                      onImageLoad={onImageLoad}
+                      items={project.images}
+                      showBullets={true}
+                      showThumbnails={false}
+                      showFullscreenButton={false}
+                      showPlayButton={false}
+                    />
+                    <Tags>
+                      {project.tags.map((tag, index) => (
+                        <Tag key={tag}>{tag}</Tag>
+                      ))}
+                    </Tags>
+                  </div>
+                </ImagesContainer>
+              </Container>
+            </Overlay>
+          </FocusOn>
         ))
       }
-    </Transition>
+    </Transition>,
+    document.body,
   );
 }
 

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import WorkModal from './WorkModal';
+import useDisclosure from 'hooks/useDisclosure';
 
 const Card = styled.div`
   align-items: center;
@@ -23,24 +24,17 @@ const Title = styled.h2`
 `;
 
 const WorkCard = ({ project }) => {
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const toggleModalOpen = () => {
-    document.querySelector('body').style.overflow = !modalOpen
-      ? 'hidden'
-      : 'initial';
-    setModalOpen(!modalOpen);
-  };
+  const { open, close, toggle, isOpen } = useDisclosure();
 
   return (
     <>
       <WorkModal
-        toggleModalOpen={toggleModalOpen}
-        onClose={toggleModalOpen}
-        open={modalOpen}
+        toggleModalOpen={toggle}
+        onClose={close}
+        open={isOpen}
         project={project}
       />
-      <Card onClick={toggleModalOpen} background={project.background}>
+      <Card onClick={open} background={project.background}>
         <Title>{project.projectTitle}</Title>
       </Card>
     </>

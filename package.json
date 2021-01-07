@@ -10,6 +10,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-focus-on": "^3.5.1",
     "react-image-gallery": "^0.8.17",
     "react-ink": "^6.4.0",
     "react-scripts": "3.1.2",
