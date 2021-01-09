@@ -5,6 +5,8 @@
   transition: color 0.1s ease-out;
   padding: 5px;
   border-radius: 4px;
+  content: '›';
+  font-size: 100px;
 }
 
 .image-gallery-left-nav::before {
@@ -12,6 +14,8 @@
   line-height: 0.7;
   text-shadow: 0 1px 1px var(--secondary);
   transition: color 0.1s ease-out;
+  content: '‹';
+  font-size: 100px;
 }
 
 .image-gallery-right-nav:hover::before,

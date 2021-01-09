@@ -6,6 +6,10 @@ const Container = styled.div`
   ${media.phone`
   margin: 0 1rem 5rem 1rem;
   `}
+  @media (min-width: 2500px) {
+    margin-left: 500px;
+    margin-right: 500px;
+  }
 `;
 
 export default Container;
