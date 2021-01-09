@@ -42,7 +42,7 @@ function Work() {
     <Container id="work">
       <Title text="About" />
       <WorkInfo>
-      I believe the web should be available to all. That’s why I write code that adhears to W3C accessibility standards. I love crafting user experiences that are a delight to use. If I’m not busy building web apps, you’ll probably find me out climbing, or playing guitar.
+      I believe the web should be available to all. That’s why I write code that adheres to W3C accessibility standards. I love crafting user experiences that are a delight to use. If I’m not busy building web apps, you’ll probably find me out climbing, or playing guitar.
       </WorkInfo>
       <WorkInfo>Check out some recent projects:</WorkInfo>
       <Grid>

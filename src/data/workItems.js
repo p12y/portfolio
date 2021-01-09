@@ -22,7 +22,7 @@ export default [
   {
     projectTitle: 'Time Planner',
     projectInfo:
-      'Time planning application built with React, Firebase and Material UI. Complete with SSO capability, the app allows employees to create time plans and share them with other members of the team.',
+      'A time planning application built with React, Firebase and Material UI. Complete with SSO capability, the app allows employees to create time plans and share them with other members of the team.',
     background: 'linear-gradient(to right, #6dd5ed, #2193b0)',
     images: generateImages('time-planner'),
     tags: ['React', 'Firebase', 'SSO', 'Google App Engine'],
@@ -41,7 +41,7 @@ export default [
   {
     projectTitle: 'Meetup Polls',
     projectInfo:
-      'Polling application built with React and Firebase with realtime functionality. Designed to help friends & family pick a day to meet up that works for everyone.',
+      'A polling application built with React and Firebase with realtime functionality. Designed to help friends & family pick a day to meet up that works for everyone.',
     background: 'linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5)',
     appUrl: 'https://meetup-scheduler-development.firebaseapp.com/',
     githubUrl: 'https://github.com/p12y/meetup-scheduler',
