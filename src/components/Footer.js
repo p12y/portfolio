@@ -42,6 +42,7 @@ function Footer() {
         <Links>
           {links.map(link => (
             <Link
+              aria-label={link.label}
               key={link.icon}
               href={link.href}
               target="_blank"

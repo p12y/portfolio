@@ -4,18 +4,24 @@ import styled from 'styled-components';
 import WorkModal from './WorkModal';
 import useDisclosure from 'hooks/useDisclosure';
 
-const Card = styled.div`
+const Card = styled.button`
   align-items: center;
   background: #2bc0e4; /* fallback for old browsers */
   background: ${props => props.background};
   border-radius: ${({ theme }) => theme.borderRadius};
+  border: none;
   cursor: pointer;
   display: flex;
   height: 15rem;
   justify-content: center;
   margin: auto;
+  outline: none;
   position: relative;
+  transition: box-shadow 0.25s;
   width: 100%;
+  &:focus {
+    box-shadow: 0 0 0 3px var(--secondary);
+  }
 `;
 
 const Title = styled.h2`
@@ -28,13 +34,8 @@ const WorkCard = ({ project }) => {
 
   return (
     <>
-      <WorkModal
-        toggleModalOpen={toggle}
-        onClose={close}
-        open={isOpen}
-        project={project}
-      />
-      <Card onClick={open} background={project.background}>
+      <WorkModal toggleModalOpen={toggle} onClose={close} open={isOpen} project={project} />
+      <Card onClick={open} background={project.background} aria-label={`View project: ${project.projectTitle}`}>
         <Title>{project.projectTitle}</Title>
       </Card>
     </>
