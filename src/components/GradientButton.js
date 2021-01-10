@@ -13,7 +13,7 @@ const ButtonOuter = styled.a`
   position: relative;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
-  &:hover {
+  &:hover, &:focus {
     transform: scale(1.02);
   }
   &::after {
@@ -30,9 +30,10 @@ const ButtonOuter = styled.a`
     width: 100%;
     z-index: -1;
   }
-  &:hover::after {
+  &:hover::after, &:focus::after {
     filter: blur(4px);
   }
+  outline: none;
 `;
 
 const ButtonInner = styled.span`

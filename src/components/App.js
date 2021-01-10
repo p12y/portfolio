@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Navbar from './navigation/Navbar';
 import About from './about/About';
-import Tools from './tools/Tools';
 import Work from './work/Work';
 import ThemeButton from './ThemeButton';
 import media from 'styles/media';
@@ -22,7 +21,6 @@ function App() {
       <Navbar />
       <Main>
         <About />
-        <Tools />
         <Work />
         <Testimonials />
         <CallToAction />

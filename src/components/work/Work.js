@@ -40,15 +40,11 @@ const ViewMoreContainer = styled.div`
 function Work() {
   return (
     <Container id="work">
-      <Title text="Work" />
+      <Title text="About" />
       <WorkInfo>
-        My journey as a web developer started 5 years ago. Since then, I've had the opportunity to work on many
-        interesting projects. I've created full-stack applications from the ground up, built APIs and CLIs using Node
-        and worked with a number of front-end JS frameworks, including React, Vue and Angular. I'm always trying to
-        improve efficiency in the workplace and have built Chrome extensions and browser automation tools to improve
-        workflows for myself and the team.
+      I believe the web should be available to all. That’s why I write code that adheres to W3C accessibility standards. I love crafting user experiences that are a delight to use. If I’m not busy building web apps, you’ll probably find me out climbing, or playing guitar.
       </WorkInfo>
-      <WorkInfo as="h4">Check out some recent projects:</WorkInfo>
+      <WorkInfo>Check out some recent projects:</WorkInfo>
       <Grid>
         {workItems.map(project => (
           <WorkCard key={project.projectTitle} project={project} />
