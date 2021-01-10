@@ -1,10 +1,13 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { FocusOn } from 'react-focus-on';
 import { Transition } from 'react-spring/renderprops.cjs';
 import useCloseDialog from 'hooks/useCloseDialog';
 
 const DialogBackground = styled.div`
+  backdrop-filter: blur(3px);
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
   cursor: pointer;
@@ -35,7 +38,7 @@ const DialogTitle = styled.div`
 function Dialog({ open, title, content, onClose }) {
   useCloseDialog({ open, onClose });
 
-  return (
+  return ReactDOM.createPortal(
     <Transition
       config={{ duration: 100 }}
       items={open}
@@ -46,23 +49,25 @@ function Dialog({ open, title, content, onClose }) {
       {open =>
         open &&
         (props => (
-          <DialogBackground onClick={onClose} style={props}>
-            <DialogContainer onClick={e => e.stopPropagation()}>
-              <DialogTitle>{title}</DialogTitle>
-              <div>{content}</div>
-            </DialogContainer>
-          </DialogBackground>
+          <FocusOn onClickOutside={onClose} onEscapeKey={onClose} shards={[]}>
+            <DialogBackground onClick={onClose} style={props}>
+              <DialogContainer onClick={e => e.stopPropagation()}>
+                <DialogTitle>{title}</DialogTitle>
+                <div>{content}</div>
+              </DialogContainer>
+            </DialogBackground>
+          </FocusOn>
         ))
       }
-    </Transition>
+    </Transition>,
+    document.body,
   );
 }
 
 Dialog.propTypes = {
   open: PropTypes.bool.isRequired,
   title: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
-  content: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
-    .isRequired,
+  content: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
   onClose: PropTypes.func.isRequired,
 };
 

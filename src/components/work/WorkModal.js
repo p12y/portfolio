@@ -25,6 +25,7 @@ const Overlay = styled(animated.div)`
 `;
 
 const OverlayBackground = styled.div`
+  backdrop-filter: blur(3px);
   background: #2bc0e4; /* fallback for old browsers */
   background: ${props => props.background};
   height: 100%;
