@@ -21,9 +21,15 @@ const Link = styled.a`
   cursor: pointer;
   margin: 0.5em;
   text-decoration: none;
-  transition: color .2s ease-in-out;
+  transition: all 0.25s;
+  outline: none;
+  border-radius: 4px;
+  padding: 0 5px;
   &:hover {
     color: var(--primary);
+  }
+  &:focus {
+    box-shadow: 0 0 0 3px var(--secondary);
   }
 `;
 
