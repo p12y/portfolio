@@ -13,6 +13,7 @@ const ButtonOuter = styled.a`
   position: relative;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
+  will-change: transform;
   &:hover, &:focus {
     transform: scale(1.02);
   }
@@ -29,8 +30,10 @@ const ButtonOuter = styled.a`
     transition: all 0.2s ease-in-out;
     width: 100%;
     z-index: -1;
+    will-change: filter, box-shadow;
   }
   &:hover::after, &:focus::after {
+    box-shadow: 3px 4px 5px -2px rgba(0, 0, 0, 0.33);
     filter: blur(4px);
   }
   outline: 10px solid transparent;
