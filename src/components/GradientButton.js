@@ -33,7 +33,7 @@ const ButtonOuter = styled.a`
   &:hover::after, &:focus::after {
     filter: blur(4px);
   }
-  outline: none;
+  outline: 10px solid transparent;
 `;
 
 const ButtonInner = styled.span`

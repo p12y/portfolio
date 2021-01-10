@@ -14,6 +14,7 @@ import Tag from 'components/styled/Tag';
 import LoadingSpinner from './LoadingSpinner';
 
 const Overlay = styled(animated.div)`
+  backdrop-filter: blur(3px);
   height: 100%;
   left: 0;
   position: fixed;
@@ -25,7 +26,6 @@ const Overlay = styled(animated.div)`
 `;
 
 const OverlayBackground = styled.div`
-  backdrop-filter: blur(3px);
   background: #2bc0e4; /* fallback for old browsers */
   background: ${props => props.background};
   height: 100%;
