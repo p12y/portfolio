@@ -16,7 +16,7 @@ it('renders without crashing', () => {
 
 it('displays my name', () => {
   const wrap = mount(withTheme(<About />));
-  expect(wrap.text()).toContain('Peter Tyldesley');
+  expect(wrap.text()).toContain('Pete');
 });
 
 describe('nudge text', () => {
