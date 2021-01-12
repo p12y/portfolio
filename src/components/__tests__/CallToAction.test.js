@@ -23,7 +23,7 @@ it('renders without crashing', () => {
 it('should contain email link', () => {
   const wrap = mount(withTheme(<CallToAction />));
   expect(wrap.find(GradientButton).prop('href')).toEqual(
-    'mailto:ptylde@gmail.com'
+    'mailto:hello@p12y.com'
   );
 });
 
