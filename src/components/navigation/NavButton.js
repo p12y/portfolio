@@ -18,7 +18,7 @@ const IconButton = styled(NavigationButtonBase)`
   margin-bottom: 1rem;
   margin-top: 1rem;
   position: relative;
-  transition: background-color 0.5s ease, box-shadow 0.25s;
+  transition: color 0.5s ease, background-color 0.5s ease, box-shadow 0.25s;
   width: 3rem;
   box-shadow: 0 0 0 0 transparent;
   &:after {

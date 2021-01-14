@@ -23,7 +23,7 @@ const Grid = styled.div`
 const WorkInfo = styled.p`
   color: ${({ theme }) => theme.titleColor};
   font-family: ${({ theme }) => theme.fonts.body};
-  line-height: 1.5em;
+  font-size: 1.2em;
   margin-top: 0;
   margin-bottom: 2rem;
   text-align: center;

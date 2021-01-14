@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Title from 'components/Title';
 import Container from 'components/styled/Container';
 import testimonials from 'data/testimonials';
@@ -9,6 +10,7 @@ const TestimonialsContainer = styled.div`
   font-family: ${({ theme }) => theme.fonts.body};
   margin-left: 10%;
   margin-right: 10%;
+  position: relative;
   text-align: center;
 `;
 
@@ -36,11 +38,19 @@ const Position = styled.h4`
   margin-top: 0;
 `;
 
+const QuoteIconContainer = styled.div`
+  font-size: 3rem;
+  opacity: 0.3;
+`;
+
 function Testimonials() {
   return (
     <Container>
       <Title text="What people say" />
       <TestimonialsContainer>
+      <QuoteIconContainer>
+          <FontAwesomeIcon icon="quote-left" />
+        </QuoteIconContainer>
         {testimonials.map(testimonial => (
           <div style={{ paddingBottom: '3rem' }} key={testimonial.name}>
             {testimonial.avatar && <Avatar />}
