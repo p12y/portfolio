@@ -13,24 +13,51 @@ const IconButton = styled(NavigationButtonBase)`
   cursor: pointer;
   display: flex;
   font-size: 1.5rem;
-  height: 3.5rem;
+  height: 3rem;
   justify-content: center;
   margin-bottom: 1rem;
   margin-top: 1rem;
   position: relative;
-  transition: background-color 0.1s ease;
-  width: 3.5rem;
+  transition: background-color 0.5s ease, box-shadow 0.25s;
+  width: 3rem;
+  box-shadow: 0 0 0 0 transparent;
+  &:after {
+    content: '';
+    display: block;
+    width: 100%;
+    background: black;
+    height: 100%;
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+  }
   &:hover,
   &:focus {
-    background: ${props => props.theme.nav.hoverCircle};
+    &:after {
+      opacity: 0.1;
+    }
   }
+  &:focus {
+    box-shadow: 0 0 0 3px var(--secondary);
+  }
+`;
+
+const ButtonInner = styled.span`
+  align-items: center;
+  border-radius: 50%;
+  display: inline-flex;
+  z-index: 1;
 `;
 
 function NavButton({ icon, onClick, ariaLabel }) {
   return (
     <IconButton onClick={onClick} aria-label={ariaLabel}>
-      <Ink />
-      <FontAwesomeIcon icon={icon} />
+      <ButtonInner>
+        <Ink />
+        <FontAwesomeIcon icon={icon} />
+      </ButtonInner>
     </IconButton>
   );
 }
