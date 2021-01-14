@@ -31,12 +31,14 @@ const IconButton = styled(NavigationButtonBase)`
     border-radius: 50%;
     z-index: 0;
     opacity: 0;
-    transition: opacity 0.1s ease;
+    transform: scale(0);
+    transition: opacity 0.15s ease, transform 0.15s;
   }
   &:hover,
   &:focus {
     &:after {
       opacity: 0.1;
+      transform: scale(1);
     }
   }
   &:focus {
